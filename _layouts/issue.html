@@ -1,0 +1,39 @@
+---
+layout: default
+---
+{%- assign key = page.categories | first -%}
+<article class="issue sec-{{ key }}">
+  <header class="issue-head">
+    <a class="tab" href="{{ '/' | append: key | append: '/' | relative_url }}">{% include section_name.html key=key %}</a>
+    <h1>{{ page.title }}</h1>
+    <p class="issue-date"><time datetime="{{ page.date | date_to_xmlschema }}">{% include date_zh.html date=page.date %}</time></p>
+    {%- if page.tags.size > 0 %}
+    <ul class="tags" aria-label="標籤">
+      {%- for t in page.tags %}
+      <li><a href="{{ '/tags/' | relative_url }}#{{ t | slugify: 'raw' }}">{{ t }}</a></li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+  </header>
+  <div class="prose">
+    {{ content }}
+  </div>
+  {%- assign list = site.categories[key] -%}
+  {%- for p in list -%}
+    {%- if p.url == page.url -%}
+      {%- assign i = forloop.index0 -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign newer_i = i | minus: 1 -%}
+  {%- assign older_i = i | plus: 1 -%}
+  <nav class="pager" aria-label="同欄目前後期">
+    {%- if older_i < list.size %}
+    {%- assign older = list[older_i] %}
+    <a class="older" href="{{ older.url | relative_url }}"><span>上一期</span>{% include date_zh.html date=older.date %}</a>
+    {%- endif %}
+    {%- if i > 0 %}
+    {%- assign newer = list[newer_i] %}
+    <a class="newer" href="{{ newer.url | relative_url }}"><span>下一期</span>{% include date_zh.html date=newer.date %}</a>
+    {%- endif %}
+  </nav>
+</article>

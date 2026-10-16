@@ -1,0 +1,40 @@
+title: 人權・性別・勞動法每日快報
+description: 每天整理國際人權法、性別法與理論、勞動法的新發展，附原始來源。
+lang: zh-Hant
+timezone: Asia/Taipei
+permalink: /:categories/:year-:month-:day/
+future: true
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+sections:
+  - key: human-rights
+    name: 人權
+    full: 國際人權法每日快報
+  - key: gender
+    name: 性別
+    full: 性別法與理論每日快報
+  - key: labour
+    name: 勞動
+    full: 勞動法每日快報
+
+disclaimer: 本站內容由 AI 輔助整理公開資料而成，僅供研究參考，不構成法律意見。引用前請查核原始來源。
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+feed:
+  categories:
+    - human-rights
+    - gender
+    - labour
+
+exclude:
+  - README.md
+  - PUBLISHING.md
+  - CLAUDE.md
+  - Gemfile
+  - Gemfile.lock

@@ -1,0 +1,27 @@
+{%- assign days = site.posts | group_by_exp: "p", "p.date | date: '%Y-%m-%d'" -%}
+{%- assign lim = include.limit | default: 100000 -%}
+<table class="ledger">
+  <caption class="visually-hidden">各日期已發布的快報</caption>
+  <thead>
+    <tr>
+      <th scope="col">日期</th>
+      {%- for s in site.sections %}
+      <th scope="col" class="sec-{{ s.key }}">{{ s.name }}</th>
+      {%- endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {%- for d in days limit: lim %}
+    <tr>
+      <th scope="row">{% include date_zh.html date=d.items.first.date %}</th>
+      {%- for s in site.sections %}
+      {%- assign hit = nil -%}
+      {%- for p in d.items -%}{%- if p.categories contains s.key -%}{%- assign hit = p -%}{%- endif -%}{%- endfor %}
+      <td class="sec-{{ s.key }}">
+        {%- if hit %}<a class="mark" href="{{ hit.url | relative_url }}" title="{{ hit.title | escape }}">{{ s.name }}</a>{% else %}<span class="nomark" aria-label="未發布"></span>{% endif -%}
+      </td>
+      {%- endfor %}
+    </tr>
+    {%- endfor %}
+  </tbody>
+</table>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  {% feed_meta %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要內容</a>
+  <header class="site-head">
+    <div class="wrap head-inner">
+      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <nav class="site-nav" aria-label="主選單">
+        <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>最新</a>
+        {%- for s in site.sections %}
+        <a class="nav-{{ s.key }}" href="{{ '/' | append: s.key | append: '/' | relative_url }}"{% if page.section_page == s.key or page.categories contains s.key %} aria-current="page"{% endif %}>{{ s.name }}</a>
+        {%- endfor %}
+        <a href="{{ '/tags/' | relative_url }}"{% if page.url == '/tags/' %} aria-current="page"{% endif %}>標籤</a>
+        <a href="{{ '/search/' | relative_url }}"{% if page.url == '/search/' %} aria-current="page"{% endif %}>搜尋</a>
+        <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>關於</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    {{ content }}
+  </main>
+  <footer class="site-foot">
+    <div class="wrap">
+      <p>{{ site.disclaimer }}</p>
+      <p>訂閱：<a href="{{ '/feed.xml' | relative_url }}">全部</a>{% for s in site.sections %}、<a href="{{ '/feed/' | append: s.key | append: '.xml' | relative_url }}">{{ s.name }}</a>{% endfor %}（RSS）</p>
+    </div>
+  </footer>
+</body>
+</html>

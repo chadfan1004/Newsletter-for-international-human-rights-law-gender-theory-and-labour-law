@@ -1,0 +1,79 @@
+---
+layout: default
+title: 搜尋
+permalink: /search/
+---
+<h1>搜尋</h1>
+<form class="search-form" role="search" onsubmit="return false">
+  <label for="q" class="visually-hidden">關鍵字</label>
+  <input id="q" type="search" placeholder="例如 CEDAW、強迫勞動、Koh" autocomplete="off">
+  <fieldset class="filter">
+    <legend class="visually-hidden">欄目</legend>
+    <label><input type="radio" name="sec" value="" checked> 全部</label>
+    {%- for s in site.sections %}
+    <label class="sec-{{ s.key }}"><input type="radio" name="sec" value="{{ s.key }}"> {{ s.name }}</label>
+    {%- endfor %}
+  </fieldset>
+</form>
+<p id="status" class="muted" aria-live="polite">輸入關鍵字開始搜尋。多個關鍵字用空格分開，會找出全部都符合的文章。</p>
+<ol id="results" class="results"></ol>
+
+<script>
+(function () {
+  var NAMES = { {% for s in site.sections %}"{{ s.key }}": "{{ s.name }}"{% unless forloop.last %}, {% endunless %}{% endfor %} };
+  var q = document.getElementById('q');
+  var out = document.getElementById('results');
+  var status = document.getElementById('status');
+  var data = null;
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function secValue() {
+    var r = document.querySelector('input[name="sec"]:checked');
+    return r ? r.value : '';
+  }
+  function snippet(text, term) {
+    var i = text.toLowerCase().indexOf(term.toLowerCase());
+    if (i < 0) return esc(text.slice(0, 120)) + '…';
+    var start = Math.max(0, i - 50);
+    var end = Math.min(text.length, i + term.length + 70);
+    return (start > 0 ? '…' : '') + esc(text.slice(start, i)) +
+      '<mark>' + esc(text.slice(i, i + term.length)) + '</mark>' +
+      esc(text.slice(i + term.length, end)) + (end < text.length ? '…' : '');
+  }
+  function run() {
+    var raw = q.value.trim();
+    var sec = secValue();
+    try {
+      var url = new URL(location.href);
+      if (raw) url.searchParams.set('q', raw); else url.searchParams.delete('q');
+      history.replaceState(null, '', url);
+    } catch (e) {}
+    out.innerHTML = '';
+    if (!raw) { status.textContent = '輸入關鍵字開始搜尋。多個關鍵字用空格分開，會找出全部都符合的文章。'; return; }
+    if (!data) { status.textContent = '正在載入索引…'; return; }
+    var terms = raw.toLowerCase().split(/\s+/);
+    var hits = data.filter(function (p) {
+      if (sec && p.s !== sec) return false;
+      var hay = (p.t + ' ' + p.m + ' ' + p.g.join(' ') + ' ' + p.c).toLowerCase();
+      return terms.every(function (t) { return hay.indexOf(t) >= 0; });
+    });
+    status.textContent = hits.length ? '找到 ' + hits.length + ' 篇。' : '沒有符合的文章。試試換個關鍵字，或改選「全部」欄目。';
+    out.innerHTML = hits.slice(0, 100).map(function (p) {
+      return '<li class="sec-' + esc(p.s) + '"><span class="chip">' + esc(NAMES[p.s] || p.s) + '</span>' +
+        '<a href="' + esc(p.u) + '">' + esc(p.t) + '</a>' +
+        '<p>' + snippet(p.c, terms[0]) + '</p></li>';
+    }).join('');
+  }
+  q.addEventListener('input', run);
+  document.querySelectorAll('input[name="sec"]').forEach(function (r) { r.addEventListener('change', run); });
+  try { var pre = new URL(location.href).searchParams.get('q'); if (pre) q.value = pre; } catch (e) {}
+  fetch('{{ "/search.json" | relative_url }}')
+    .then(function (r) { return r.json(); })
+    .then(function (j) { data = j; run(); })
+    .catch(function () { status.textContent = '搜尋索引載入失敗，請重新整理頁面。'; });
+})();
+</script>

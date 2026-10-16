@@ -1,0 +1,27 @@
+---
+layout: default
+title: 標籤
+permalink: /tags/
+---
+<h1>標籤</h1>
+{%- assign tags = site.tags | sort -%}
+{%- if tags.size == 0 %}
+<p class="muted">發布第一期之後，議題標籤會出現在這裡。</p>
+{%- else %}
+<ul class="tag-index">
+  {%- for t in tags %}
+  <li><a href="#{{ t[0] | slugify: 'raw' }}">{{ t[0] }}<span class="count">{{ t[1].size }}</span></a></li>
+  {%- endfor %}
+</ul>
+{%- for t in tags %}
+<section class="tag-group" id="{{ t[0] | slugify: 'raw' }}">
+  <h2>{{ t[0] }}</h2>
+  <ul class="tag-posts">
+    {%- for p in t[1] %}
+    {%- assign key = p.categories | first %}
+    <li class="sec-{{ key }}"><span class="chip">{% include section_name.html key=key %}</span><a href="{{ p.url | relative_url }}">{% include date_zh.html date=p.date %}</a>{% if p.summary %}<span class="sum">{{ p.summary }}</span>{% endif %}</li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endfor %}
+{%- endif %}

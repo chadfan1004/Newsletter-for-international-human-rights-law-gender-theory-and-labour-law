@@ -1,0 +1,43 @@
+---
+layout: default
+title: 最新
+---
+{%- assign days = site.posts | group_by_exp: "p", "p.date | date: '%Y-%m-%d'" -%}
+{%- if days.size == 0 %}
+<section class="empty">
+  <h1>第一期還在路上</h1>
+  <p>每天早上，國際人權法、性別法與理論、勞動法三份快報會自動發布到這裡。</p>
+</section>
+{%- else %}
+{%- assign today = days.first %}
+<section class="today" aria-labelledby="today-h">
+  <h1 id="today-h">{% include date_zh.html date=today.items.first.date %}</h1>
+  <div class="today-grid">
+    {%- for s in site.sections %}
+    {%- assign hit = nil -%}
+    {%- for p in today.items -%}{%- if p.categories contains s.key -%}{%- assign hit = p -%}{%- endif -%}{%- endfor %}
+    <article class="card sec-{{ s.key }}{% unless hit %} is-empty{% endunless %}">
+      <span class="tab">{{ s.name }}</span>
+      <div class="card-body">
+      {%- if hit %}
+      <h2><a href="{{ hit.url | relative_url }}">{{ s.full }}</a></h2>
+      {%- if hit.summary %}<p>{{ hit.summary }}</p>{% endif %}
+      {%- if hit.tags.size > 0 %}
+      <ul class="tags">{% for t in hit.tags limit: 5 %}<li>{{ t }}</li>{% endfor %}</ul>
+      {%- endif %}
+      {%- else %}
+      <h2>{{ s.full }}</h2>
+      <p class="muted">這一天還沒有這份快報。</p>
+      {%- endif %}
+      </div>
+    </article>
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="recent" aria-labelledby="recent-h">
+  <h2 id="recent-h">最近 30 天</h2>
+  {% include ledger.html limit=30 %}
+  {%- if days.size > 30 %}<p><a href="{{ '/archive/' | relative_url }}">查看全部日期</a></p>{% endif %}
+</section>
+{%- endif %}

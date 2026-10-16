@@ -1,0 +1,74 @@
+# 發布規格（給每日排程任務）
+
+每天的快報寫好後，依下列規格存成一個 Markdown 檔，推送到本 repo 的 `main` 分支。GitHub Pages 會自動把它變成網站上的一期。
+
+## 1. 檔名與位置
+
+`_posts/YYYY-MM-DD-<欄目>.md`
+
+- 日期用台北時間的發布當天。
+- `<欄目>` 只能是下列三者之一：
+  - `human-rights`：國際人權法每日快報
+  - `gender`：性別法與理論每日快報
+  - `labour`：勞動法每日快報
+- 例：`_posts/2026-10-17-human-rights.md`
+- 同一天同一欄目的檔案已存在時（例如重跑），直接覆寫，不要另開新檔。
+
+## 2. 檔頭（front matter）
+
+檔案最開頭必須是以下格式，欄位名稱與順序照抄：
+
+```yaml
+---
+layout: issue
+title: "國際人權法每日快報｜2026 年 10 月 17 日"
+date: 2026-10-17 07:50:00 +0800
+categories: [human-rights]
+tags: [CEDAW, ECtHR, 強迫勞動]
+summary: "一到兩句話，點出今天最重要的一兩則發展。"
+---
+```
+
+- `title`：快報名稱＋「｜」＋日期，日期寫成「YYYY 年 M 月 D 日」。
+- `date`：發布當天日期，時間寫實際執行的大約時間，時區固定 `+0800`。
+- `categories`：只放一個值，就是檔名裡的欄目代碼。
+- `tags`：3 到 8 個議題標籤。先執行 `grep -h "^tags:" _posts/*.md` 看已經用過哪些標籤，同一個概念沿用既有寫法，不要另造同義詞。標籤寫法參考第 5 節。
+- `summary`：一到兩句話，會顯示在首頁卡片和列表上。整段用英文雙引號包起來，內文不要再出現英文雙引號（需要引號時用「」）。本日沒有重要新發展時，就寫出這件事。
+
+## 3. 內文
+
+- 檔頭之後直接從第一個段落標題開始，**不要**再寫一次快報標題（網站版面會自動顯示 title）。
+- 大段落用 `##`，例如 `## 一、今日重點`；段落內的分類用 `###`，例如 `### 聯合國人權理事會`。
+- 連結一律用 Markdown 格式 `[標題](https://...)`。
+- 不要使用 em dash（—）。
+- 內文不要出現 `{{`、`}}`、`{%`、`%}` 這幾組符號（網站產生器會把它們當成指令而出錯）。
+
+## 4. 推送
+
+在 repo 目錄下：
+
+```bash
+git config user.name "Daily Newsletter Bot"
+git config user.email "chadfan1004@users.noreply.github.com"
+git add _posts/<檔名>
+git commit -m "Add <欄目> YYYY-MM-DD"
+git pull --rebase origin main
+git push origin main
+```
+
+- 推送被拒（其他快報剛好同時推送）時，重新 `git pull --rebase origin main` 再推，最多重試 3 次。
+- 只新增或覆寫自己這一期的檔案，不要修改 repo 裡的任何其他檔案。
+- 推送成功後，網站約 1 到 3 分鐘內更新。網址：<https://chadfan1004.github.io/Newsletter-for-international-human-rights-law-gender-theory-and-labour-law/>
+
+## 5. 標籤寫法參考
+
+沿用下列寫法；清單沒有的新議題可以新增，用最常見、最短的稱呼。
+
+- 聯合國機制：人權理事會、UPR、CEDAW、CCPR、CESCR、CRC、CAT、CERD、CRPD、CMW、CED、特別程序、聯合國大會
+- 區域與國際法院：ECtHR、IACtHR、美洲人權委員會、非洲人權機制、ICJ、歐洲理事會、歐盟
+- 勞動：ILO、強迫勞動、移工、平台勞動、職場霸凌、性騷擾、C190、工會、罷工、勞基法、勞動事件、同酬、職業安全
+- 企業與人權：人權盡職調查、CSDDD、UNGPs、UFLPA、工商人權條約
+- 跨議題：AI、氣候、健康環境權、隱私
+- 性別：生育權、墮胎、性別認同、同性婚姻、性暴力、家庭暴力、伊斯坦堡公約
+- 理論：女性主義法學、跨國法律程序、傅柯、現象學、酷兒理論、交織性
+- 地域：台灣（與台灣有關時加上）

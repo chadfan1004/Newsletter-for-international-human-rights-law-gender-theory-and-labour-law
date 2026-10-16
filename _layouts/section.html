@@ -1,0 +1,28 @@
+---
+layout: default
+---
+{%- assign key = page.section_page -%}
+{%- for s in site.sections -%}{%- if s.key == key -%}{%- assign sec = s -%}{%- endif -%}{%- endfor -%}
+{%- assign list = site.categories[key] -%}
+<header class="section-head sec-{{ key }}">
+  <span class="tab">{{ sec.name }}</span>
+  <h1>{{ sec.full }}</h1>
+  {{ content }}
+</header>
+{%- if list.size > 0 %}
+<ol class="issue-list sec-{{ key }}" reversed>
+  {%- for p in list %}
+  <li>
+    <a href="{{ p.url | relative_url }}">
+      <time datetime="{{ p.date | date_to_xmlschema }}">{% include date_zh.html date=p.date %}</time>
+      {%- if p.summary %}<span class="sum">{{ p.summary }}</span>{% endif %}
+    </a>
+    {%- if p.tags.size > 0 %}
+    <ul class="tags">{% for t in p.tags limit: 6 %}<li>{{ t }}</li>{% endfor %}</ul>
+    {%- endif %}
+  </li>
+  {%- endfor %}
+</ol>
+{%- else %}
+<p class="muted">這個欄目還沒有發布任何一期。</p>
+{%- endif %}
