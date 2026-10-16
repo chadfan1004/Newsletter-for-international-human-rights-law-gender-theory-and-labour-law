@@ -12,6 +12,7 @@
   --c-hr: #2e4a86;      /* 人權：深靛 */
   --c-gender: #86386b;  /* 性別：梅紫 */
   --c-labour: #8f2f26;  /* 勞動：磚紅 */
+  --c-digital: #1d6658; /* 數位：深青 */
   --on-tab: #ffffff;
   --mark-bg: #f1e3a6;
   --serif: "Source Serif 4", "Noto Serif TC", "Songti TC", serif;
@@ -28,6 +29,7 @@
     --c-hr: #8ea7e2;
     --c-gender: #d99ac3;
     --c-labour: #e8998d;
+    --c-digital: #7ccbb6;
     --on-tab: #14171a;
     --mark-bg: #5a4d14;
   }
@@ -36,6 +38,7 @@
 .sec-human-rights { --sec: var(--c-hr); }
 .sec-gender { --sec: var(--c-gender); }
 .sec-labour { --sec: var(--c-labour); }
+.sec-digital { --sec: var(--c-digital); }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -73,6 +76,7 @@ h3 { font-size: 1.1rem; }
 .site-nav .nav-human-rights[aria-current="page"] { color: var(--c-hr); border-bottom-color: var(--c-hr); }
 .site-nav .nav-gender[aria-current="page"] { color: var(--c-gender); border-bottom-color: var(--c-gender); }
 .site-nav .nav-labour[aria-current="page"] { color: var(--c-labour); border-bottom-color: var(--c-labour); }
+.site-nav .nav-digital[aria-current="page"] { color: var(--c-digital); border-bottom-color: var(--c-digital); }
 
 main { padding-top: 2.25rem; padding-bottom: 3rem; min-height: 60vh; }
 
@@ -94,7 +98,7 @@ a.tab:hover { color: var(--on-tab); }
 
 /* Home: today */
 .today h1 { font-size: 1.6rem; margin-bottom: 1.25rem; }
-.today-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem 1.25rem; }
+.today-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 1.25rem; }
 .card { display: flex; flex-direction: column; }
 .card > .tab { align-self: flex-start; }
 .card-body { flex: 1; display: flex; flex-direction: column; background: var(--card); border-top: 3px solid var(--sec); padding: .9rem 1rem 1rem; }

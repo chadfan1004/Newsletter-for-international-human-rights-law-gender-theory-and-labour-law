@@ -1,6 +1,6 @@
 # 人權・性別・勞動法每日快報
 
-每天整理國際人權法、性別法與理論、勞動法三個領域的新發展，附原始來源連結。
+每天整理國際人權法、性別法與理論、勞動法、AI 與數位治理四個領域的新發展，附原始來源連結。
 
 網站：<https://chadfan1004.github.io/Newsletter-for-international-human-rights-law-gender-theory-and-labour-law/>
 
