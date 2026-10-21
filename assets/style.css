@@ -124,6 +124,8 @@ a.tab:hover { color: var(--on-tab); }
   margin: 0; font-size: clamp(3rem, 9vw, 5.6rem); font-weight: 900; line-height: 1;
   letter-spacing: .14em; color: var(--ink);
 }
+.hero-origin { margin: .9rem 0 0; font-size: .92rem; color: var(--ink); letter-spacing: .06em; }
+.hero-origin + .hero-sub { margin-top: .35rem; }
 .hero-sub { margin: 1.1rem 0 0; color: var(--muted); font-size: 1rem; letter-spacing: .04em; }
 .hero-date {
   grid-row: 1; grid-column: 2; margin: 0; writing-mode: vertical-rl; text-orientation: upright;
