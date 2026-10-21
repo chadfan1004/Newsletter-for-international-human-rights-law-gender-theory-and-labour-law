@@ -1,44 +1,44 @@
-/* 人權・性別・勞動法每日快報
-   Idea: a case-file cabinet. Each newsletter is a coloured index tab;
-   everything else stays quiet so the tabs do the navigating. */
+/* 每日法潮
+   Idea: 平安時代的襲色目。每份快報是一組表裏兩色，
+   像十二單的衣襟一層層疊起來；其餘部分保持安靜。 */
 
 :root {
-  --paper: #f3f4f1;
-  --card: #fbfbf9;
-  --ink: #1d2226;
-  --muted: #5a6269;
-  --rule: #d3d7d0;
-  --link: #24456f;
-  --c-hr: #2e4a86;      /* 人權：深靛 */
-  --c-gender: #86386b;  /* 性別：梅紫 */
-  --c-labour: #8f2f26;  /* 勞動：磚紅 */
-  --c-digital: #1d6658; /* 數位：深青 */
-  --on-tab: #ffffff;
-  --mark-bg: #f1e3a6;
-  --serif: "Source Serif 4", "Noto Serif TC", "Songti TC", serif;
+  --paper: #f6efdf;     /* 鳥の子 */
+  --card: #fcf8ee;      /* 胡粉 */
+  --ink: #2b2523;       /* 墨 */
+  --muted: #6b5f57;     /* 鈍色 */
+  --rule: #e0d2b6;      /* 淡香 */
+  --link: #24587a;
+  --c-hr: #24587a;      --l-hr: #bcd5df;      /* 縹／白藍 */
+  --c-gender: #7a4579;  --l-gender: #cdb9d9;  /* 紫／藤 */
+  --c-labour: #8e3238;  --l-labour: #eaaeae;  /* 蘇芳／紅梅 */
+  --c-digital: #3b6a4c; --l-digital: #bccb75; /* 木賊／萌黃 */
+  --on-tab: #fcf8ee;
+  --mark-bg: #f1dc9a;   /* 山吹淡 */
+  --serif: "Noto Serif TC", "Noto Serif CJK TC", "Source Serif 4", "Songti TC", serif;
   --sans: "Noto Sans TC", system-ui, -apple-system, "PingFang TC", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #14171a;
-    --card: #1b1f23;
-    --ink: #e2e5e1;
-    --muted: #9aa2a8;
-    --rule: #2e353a;
-    --link: #9fb9e6;
-    --c-hr: #8ea7e2;
-    --c-gender: #d99ac3;
-    --c-labour: #e8998d;
-    --c-digital: #7ccbb6;
-    --on-tab: #14171a;
-    --mark-bg: #5a4d14;
+    --paper: #26201f;   /* 檳榔子黒 */
+    --card: #2f2827;
+    --ink: #ece3d2;
+    --muted: #b3a697;
+    --rule: #463c38;
+    --link: #9cc2d8;
+    --c-hr: #9cc2d8;      --l-hr: #3d6178;
+    --c-gender: #c9a6cf;  --l-gender: #5d4462;
+    --c-labour: #e39c9b;  --l-labour: #6e3539;
+    --c-digital: #a9c48f; --l-digital: #4b5d33;
+    --on-tab: #26201f;
+    --mark-bg: #6a5420;
   }
 }
 
-.sec-human-rights { --sec: var(--c-hr); }
-.sec-gender { --sec: var(--c-gender); }
-.sec-labour { --sec: var(--c-labour); }
-.sec-digital { --sec: var(--c-digital); }
+.sec-human-rights { --sec: var(--c-hr); --sec-l: var(--l-hr); }
+.sec-gender { --sec: var(--c-gender); --sec-l: var(--l-gender); }
+.sec-labour { --sec: var(--c-labour); --sec-l: var(--l-labour); }
+.sec-digital { --sec: var(--c-digital); --sec-l: var(--l-digital); }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -96,19 +96,50 @@ main { padding-top: 2.25rem; padding-bottom: 3rem; min-height: 60vh; }
 }
 a.tab:hover { color: var(--on-tab); }
 
-/* Home: today */
-.today h1 { font-size: 1.6rem; margin-bottom: 1.25rem; }
-.today-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 1.25rem; }
-.card { display: flex; flex-direction: column; }
-.card > .tab { align-self: flex-start; }
-.card-body { flex: 1; display: flex; flex-direction: column; background: var(--card); border-top: 3px solid var(--sec); padding: .9rem 1rem 1rem; }
-.card h2 { font-size: 1.12rem; margin: 0 0 .5rem; }
-.card h2 a { color: var(--ink); text-decoration: none; }
-.card h2 a:hover { color: var(--sec); }
-.card p { margin: 0 0 .5rem; font-size: .98rem; line-height: 1.8; }
-.card .tags { margin-top: auto; padding-top: .5rem; }
-.card.is-empty h2 { color: var(--muted); }
-.card.is-empty .tab { opacity: .45; }
+/* Home */
+.hero {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 2rem;
+  align-items: end; margin: .75rem 0 2.75rem;
+}
+.hero-title {
+  margin: 0; font-size: clamp(3rem, 9vw, 5.6rem); font-weight: 900; line-height: 1;
+  letter-spacing: .14em; color: var(--ink);
+}
+.hero-sub { margin: 1.1rem 0 0; color: var(--muted); font-size: 1rem; letter-spacing: .04em; }
+.hero-date {
+  grid-row: 1; grid-column: 2; margin: 0; writing-mode: vertical-rl; text-orientation: upright;
+  font-size: 1.05rem; letter-spacing: .2em; line-height: 1.9; color: var(--ink);
+  white-space: nowrap; border-right: 1px solid var(--rule); padding-right: .7rem;
+}
+.hero-date time > span { display: block; }
+.hero-date .kd-y, .hero-wd { color: var(--muted); }
+.kasane { grid-column: 1 / -1; display: grid; margin-top: 1.6rem; }
+.kasane span { display: block; height: 4px; background: var(--sec); }
+.kasane span + span { margin-top: 2px; }
+.kasane span:nth-child(2) { margin-right: 6%; }
+.kasane span:nth-child(3) { margin-right: 12%; }
+.kasane span:nth-child(4) { margin-right: 18%; }
+
+.today { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 2rem; }
+.leaf {
+  position: relative; display: flex; flex-direction: column;
+  background: var(--card); padding: 1.25rem 1.4rem 1.2rem 2.1rem;
+  box-shadow: inset 6px 0 0 var(--sec), inset 12px 0 0 var(--sec-l);
+}
+.leaf-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem 1rem; margin-bottom: .65rem; }
+.leaf-name { margin: 0; font-size: 1.75rem; font-weight: 700; letter-spacing: .2em; line-height: 1.2; }
+.leaf-name a { color: var(--sec); text-decoration: none; }
+.leaf-name a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
+.leaf-full { margin: 0; color: var(--muted); font-size: .88rem; }
+.leaf-sum { margin: 0 0 .6rem; font-size: .98rem; line-height: 1.85; }
+.leaf .tags { margin-top: auto; padding-top: .4rem; }
+.leaf-more { margin: .9rem 0 0; font-family: var(--sans); font-size: .9rem; }
+.leaf.is-empty { box-shadow: inset 6px 0 0 var(--rule), inset 12px 0 0 var(--paper); }
+.leaf.is-empty .leaf-name { color: var(--muted); }
+
+.home-links { display: flex; gap: 1.5rem; margin: 2.5rem 0 0; font-family: var(--sans); font-size: .92rem; }
+.home-links a { color: var(--muted); }
+.home-links a:hover { color: var(--ink); }
 
 /* Tags (chips) */
 .tags { list-style: none; padding: 0; margin: .5rem 0 0; display: flex; flex-wrap: wrap; gap: .35rem; font-family: var(--sans); font-size: .8rem; line-height: 1.4; }
@@ -117,9 +148,7 @@ a.tab:hover { color: var(--on-tab); }
 .tags a:hover { color: var(--sec, var(--ink)); }
 
 /* Ledger */
-.recent { margin-top: 3rem; }
-.recent h2 { font-size: 1.15rem; margin-bottom: .75rem; }
-.ledger { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: .92rem; }
+.ledger { width: 100%; max-width: 46rem; border-collapse: collapse; font-family: var(--sans); font-size: .92rem; }
 .ledger th, .ledger td { padding: .5rem .5rem; border-bottom: 1px solid var(--rule); text-align: center; }
 .ledger thead th { font-weight: 500; color: var(--sec, var(--muted)); font-size: .85rem; border-bottom: 2px solid var(--rule); }
 .ledger tbody th { text-align: left; font-weight: 400; white-space: nowrap; }
@@ -205,7 +234,11 @@ mark { background: var(--mark-bg); color: inherit; padding: 0 .1em; }
 @media (max-width: 760px) {
   body { font-size: 1rem; }
   h1 { font-size: 1.5rem; }
-  .today-grid { grid-template-columns: 1fr; }
+  .today { grid-template-columns: 1fr; gap: 1.25rem; }
+  .hero { column-gap: 1rem; margin-bottom: 2rem; }
+  .hero-title { letter-spacing: .08em; }
+  .hero-date { font-size: .9rem; letter-spacing: .14em; }
+  .leaf { padding: 1.1rem 1.1rem 1.1rem 1.8rem; }
   .issue-head h1 { font-size: 1.4rem; }
   .ledger th, .ledger td { padding: .45rem .25rem; }
   .ledger tbody th { font-size: .82rem; white-space: normal; }
