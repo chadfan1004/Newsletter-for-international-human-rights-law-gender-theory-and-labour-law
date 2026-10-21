@@ -6,7 +6,7 @@ title: 最新
 {%- assign wd = "日,一,二,三,四,五,六" | split: "," -%}
 <section class="hero" aria-labelledby="hero-h">
   <div class="hero-text">
-    <h1 id="hero-h" class="hero-title">每日法潮</h1>
+    <h1 id="hero-h" class="hero-title"><ruby>澪標<rt>みおつくし</rt></ruby></h1>
     <p class="hero-sub">國際人權法、性別法與理論、勞動法、AI 與數位治理、ESG 與供應鏈風險的每日動態</p>
   </div>
   {%- if days.size > 0 %}
@@ -23,6 +23,14 @@ title: 最新
 </section>
 {%- else %}
 {%- assign today = days.first %}
+<section id="up-home" class="up-home" aria-labelledby="up-home-h" hidden>
+  <div class="up-home-head">
+    <h2 id="up-home-h">近期追蹤</h2>
+    <a href="{{ '/upcoming/' | relative_url }}">全部追蹤</a>
+  </div>
+  <ul class="up-list"></ul>
+</section>
+
 <section class="today" aria-label="本期快報">
   {%- for s in site.sections %}
   {%- assign hit = nil -%}
@@ -50,7 +58,9 @@ title: 最新
 </section>
 
 <p class="home-links">
+  <a href="{{ '/upcoming/' | relative_url }}">追蹤</a>
   <a href="{{ '/archive/' | relative_url }}">更新紀錄</a>
   <a href="{{ '/library/' | relative_url }}">收藏</a>
 </p>
+{% include upcoming_data.html %}
 {%- endif %}

@@ -1,4 +1,4 @@
-/* 每日法潮
+/* 澪標（みおつくし）
    Idea: 平安時代的襲色目。每份快報是一組表裏兩色，
    像十二單的衣襟一層層疊起來；其餘部分保持安靜。 */
 
@@ -290,3 +290,37 @@ mark { background: var(--mark-bg); color: inherit; padding: 0 .1em; }
 .lib-source a { color: var(--muted); }
 .lib-note { margin: .45rem 0 0; font-size: .97rem; }
 .lib-note p { margin: 0; }
+
+/* Hero ruby（澪標的讀音） */
+.hero-title ruby { ruby-position: over; }
+.hero-title rt { font-size: .17em; font-weight: 400; letter-spacing: .5em; color: var(--muted); }
+
+/* 追蹤 */
+.up-home { margin: 0 0 2.25rem; }
+.up-home-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--rule); padding-bottom: .4rem; margin-bottom: .2rem; }
+.up-home-head h2 { margin: 0; font-size: 1.1rem; letter-spacing: .12em; }
+.up-home-head a { font-family: var(--sans); font-size: .88rem; color: var(--muted); }
+.up-list { list-style: none; margin: 0; padding: 0; }
+.up-item { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); column-gap: 1.25rem; padding: .75rem 0; border-bottom: 1px solid var(--rule); }
+.up-date { display: flex; flex-direction: column; font-family: var(--sans); line-height: 1.35; padding-left: .7rem; box-shadow: inset 3px 0 0 var(--sec, var(--rule)); }
+.up-md { font-weight: 500; font-size: .98rem; white-space: nowrap; }
+.up-wd { color: var(--muted); font-size: .8rem; }
+.up-meta { margin: 0 0 .15rem; display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .5rem; font-family: var(--sans); font-size: .78rem; line-height: 1.5; }
+.up-meta .chip { margin-right: 0; }
+.up-kind { color: var(--muted); border: 1px solid var(--rule); border-radius: 999px; padding: 0 .5rem; }
+.up-count { color: var(--muted); }
+.up-count.is-soon { color: var(--c-labour); font-weight: 500; }
+.up-count.is-today { color: var(--on-tab); background: var(--c-labour); border-radius: 999px; padding: 0 .55rem; font-weight: 500; }
+.up-title { margin: 0; line-height: 1.6; }
+.up-title a { color: var(--ink); text-decoration: none; }
+.up-title a:hover { text-decoration: underline; color: var(--sec, var(--ink)); }
+.up-foot { margin: .2rem 0 0; font-family: var(--sans); font-size: .8rem; color: var(--muted); }
+.up-foot a { color: var(--muted); }
+.up-month { margin-top: 2rem; }
+.up-month h2 { font-size: 1.15rem; margin: 0 0 .25rem; padding-bottom: .3rem; border-bottom: 1px solid var(--rule); }
+.up-pastgroup { opacity: .75; }
+#up-page .lib-filter { margin: .5rem 0 1rem; }
+@media (max-width: 760px) {
+  .up-item { grid-template-columns: 6.6rem minmax(0, 1fr); column-gap: .7rem; }
+  .up-md { font-size: .9rem; }
+}

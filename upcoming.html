@@ -1,0 +1,28 @@
+---
+layout: default
+title: 追蹤
+permalink: /upcoming/
+---
+<div id="up-page">
+  <header class="lib-head">
+    <h1>追蹤</h1>
+    <p class="muted">快報找到的預告事項：即將發布的文件、預定宣判的判決、生效與施行日、意見徵詢截止、重要會期。依日期排列，過了日期會自動收起。</p>
+  </header>
+  <form class="lib-filter" onsubmit="return false">
+    <fieldset class="filter">
+      <legend class="visually-hidden">主題</legend>
+      <label><input type="radio" name="usec" value="" checked> 全部主題</label>
+      {%- for s in site.sections %}
+      <label class="sec-{{ s.key }}"><input type="radio" name="usec" value="{{ s.key }}"> {{ s.name }}</label>
+      {%- endfor %}
+    </fieldset>
+    <fieldset class="filter">
+      <legend class="visually-hidden">顯示</legend>
+      <label><input type="checkbox" id="up-past"> 也顯示已過去的事項</label>
+    </fieldset>
+  </form>
+  <p class="up-status muted" aria-live="polite">載入中。</p>
+  <div class="up-groups"></div>
+  <noscript><p>這一頁需要開啟 JavaScript 才能顯示。</p></noscript>
+</div>
+{% include upcoming_data.html %}
