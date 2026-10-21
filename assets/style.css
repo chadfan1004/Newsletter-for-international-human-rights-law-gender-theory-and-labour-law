@@ -137,8 +137,9 @@ a.tab:hover { color: var(--on-tab); }
 .leaf.is-empty { box-shadow: inset 6px 0 0 var(--rule), inset 12px 0 0 var(--paper); }
 .leaf.is-empty .leaf-name { color: var(--muted); }
 
-.home-links { display: flex; gap: 1.5rem; margin: 2.5rem 0 0; font-family: var(--sans); font-size: .92rem; }
-.home-links a { color: var(--muted); }
+.home-links { display: flex; flex-wrap: wrap; align-items: center; margin: 2.5rem 0 0; font-family: var(--sans); font-size: .92rem; line-height: 1.4; }
+.home-links a { color: var(--muted); padding: .2rem 0; }
+.home-links a + a { margin-left: 1.75rem; padding-left: 1.75rem; border-left: 1px solid var(--rule); }
 .home-links a:hover { color: var(--ink); }
 
 /* Tags (chips) */
