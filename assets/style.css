@@ -324,3 +324,66 @@ mark { background: var(--mark-bg); color: inherit; padding: 0 .1em; }
   .up-item { grid-template-columns: 6.6rem minmax(0, 1fr); column-gap: .7rem; }
   .up-md { font-size: .9rem; }
 }
+
+/* 單期目錄 */
+.toc { margin: 0 0 2rem; font-family: var(--sans); font-size: .9rem; }
+.toc details { background: var(--card); padding: .7rem 1rem .8rem; box-shadow: inset 3px 0 0 var(--sec, var(--rule)); }
+.toc summary { cursor: pointer; font-weight: 500; color: var(--ink); }
+.toc ol { list-style: none; margin: .5rem 0 0; padding: 0; columns: 2 18rem; column-gap: 2rem; }
+.toc li { break-inside: avoid; margin: .15rem 0; }
+.toc li ol { columns: auto; margin: .1rem 0 .35rem; padding-left: 1rem; }
+.toc a { color: var(--ink); text-decoration: none; }
+.toc a:hover { color: var(--sec); text-decoration: underline; }
+
+/* 條目連結按鈕、列印按鈕 */
+.linkbtn, .printbtn {
+  font: inherit; font-family: var(--sans); font-size: .75rem; font-weight: 500; letter-spacing: .06em; line-height: 1.6;
+  color: var(--muted); background: none; border: 1px solid var(--rule); border-radius: 999px;
+  padding: .05rem .55rem; margin-left: .35rem; vertical-align: .1em; cursor: pointer; white-space: nowrap;
+}
+.linkbtn:hover, .printbtn:hover { color: var(--ink); border-color: var(--muted); }
+.linkbtn.is-done { color: var(--sec); border-color: var(--sec); }
+.printbtn { margin-left: .9rem; }
+.item-head { scroll-margin-top: 1rem; }
+.item-head.is-target { background: linear-gradient(to right, var(--sec-l, var(--mark-bg)) 0 4px, transparent 4px); padding-left: .7rem; }
+
+/* 每週回顧 */
+.week-index { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; font-family: var(--sans); font-size: .9rem; margin: .5rem 0 1rem; }
+.week-index a { color: var(--muted); }
+.week { margin-top: 2.5rem; scroll-margin-top: 1rem; }
+.week > h2 { font-size: 1.3rem; margin: 0 0 .5rem; padding-bottom: .4rem; border-bottom: 1px solid var(--rule); display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem 1rem; }
+.week-no { font-family: var(--sans); font-size: .85rem; font-weight: 400; color: var(--muted); }
+.week-sec { display: grid; grid-template-columns: 6rem minmax(0, 1fr); column-gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+.week-sec h3 { margin: 0; font-size: 1.35rem; letter-spacing: .18em; }
+.week-sec h3 a { color: var(--sec); text-decoration: none; }
+.week-days { list-style: none; margin: 0; padding: 0; }
+.week-days li { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); column-gap: 1rem; padding: .25rem 0; }
+.week-day { font-family: var(--sans); font-weight: 500; color: var(--sec); text-decoration: none; white-space: nowrap; }
+.week-day span { margin-left: .4rem; font-weight: 400; color: var(--muted); font-size: .85rem; }
+.week-days p { margin: 0; line-height: 1.8; }
+@media (max-width: 760px) {
+  .week-sec { grid-template-columns: 1fr; row-gap: .4rem; }
+  .week-days li { grid-template-columns: 1fr; }
+}
+
+/* 研究專輯 */
+.lib-albums { margin: .4rem 0 0; display: flex; flex-wrap: wrap; gap: .35rem; font-family: var(--sans); font-size: .78rem; }
+.lib-albums span { background: var(--sec-l, var(--rule)); color: var(--ink); padding: .05rem .6rem; border-radius: 3px; }
+.lib-edit { margin-left: 1rem; }
+.album-filter { padding-bottom: .2rem; }
+
+/* 列印 */
+@media print {
+  @page { margin: 18mm 16mm; }
+  :root { --paper: #fff; --card: #fff; --ink: #000; --muted: #444; --rule: #bbb; }
+  body { background: #fff; color: #000; font-size: 10.5pt; line-height: 1.7; }
+  .site-head, .site-foot, .pager, .collect, .linkbtn, .printbtn, .skip, .toc, .home-links, .lib-filter, .up-home { display: none !important; }
+  main.wrap { padding: 0; max-width: none; }
+  a { color: #000; text-decoration: none; }
+  .prose a[href^="http"] { text-decoration: underline; }
+  .issue-head { border-bottom: 2px solid #000; }
+  .issue-head .tab { background: none; color: #000; border: 1px solid #000; }
+  .prose h2, .prose h3 { break-after: avoid; }
+  .prose p, .prose li { orphans: 3; widows: 3; }
+  .item-head.is-target { background: none; padding-left: 0; }
+}

@@ -64,6 +64,8 @@
         'sections: [' + section + ']',
         'type: 待整理',
         "note: ''",
+        '# albums：研究專輯名稱，可留空或寫多個，例如 [安全墮胎論文, CSDDD 客戶案]',
+        'albums: []',
         'source: ' + q(issueUrl),
         'source_title: ' + q(issueTitle),
         'context: ' + q(clip(context, 100)),

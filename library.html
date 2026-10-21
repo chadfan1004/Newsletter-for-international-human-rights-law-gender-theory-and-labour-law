@@ -16,6 +16,9 @@ permalink: /library/
 </section>
 {%- else %}
 {%- assign types = items | map: "type" | uniq | sort -%}
+{%- assign albums = "" | split: "" -%}
+{%- for i in items -%}{%- for a in i.albums -%}{%- assign albums = albums | push: a -%}{%- endfor -%}{%- endfor -%}
+{%- assign albums = albums | uniq | sort -%}
 <form class="search-form lib-filter" role="search" onsubmit="return false">
   <label for="lq" class="visually-hidden">在收藏中搜尋</label>
   <input id="lq" type="search" placeholder="搜尋標題、機關、標籤或筆記" autocomplete="off">
@@ -26,6 +29,15 @@ permalink: /library/
     <label class="sec-{{ s.key }}"><input type="radio" name="lsec" value="{{ s.key }}"> {{ s.name }}</label>
     {%- endfor %}
   </fieldset>
+  {%- if albums.size > 0 %}
+  <fieldset class="filter album-filter">
+    <legend class="visually-hidden">研究專輯</legend>
+    <label><input type="radio" name="lalb" value="" checked> 全部專輯</label>
+    {%- for a in albums %}
+    <label><input type="radio" name="lalb" value="{{ a | escape }}"> {{ a }}</label>
+    {%- endfor %}
+  </fieldset>
+  {%- endif %}
   <fieldset class="filter">
     <legend class="visually-hidden">文件類型</legend>
     <label><input type="radio" name="ltype" value="" checked> 全部類型</label>
@@ -43,7 +55,7 @@ permalink: /library/
   <h2><span class="tab">{{ s.name }}</span></h2>
   <ul class="lib-list">
     {%- for i in group %}
-    <li class="lib-item" data-type="{{ i.type }}" data-text="{{ i.title | append: ' ' | append: i.title_zh | append: ' ' | append: i.issuer | append: ' ' | append: i.note | append: ' ' | append: i.tags | join: ' ' | downcase | escape }}">
+    <li class="lib-item" data-type="{{ i.type }}" data-albums="{% for a in i.albums %}|{{ a | escape }}{% endfor %}|" data-text="{{ i.title | append: ' ' | append: i.title_zh | append: ' ' | append: i.issuer | append: ' ' | append: i.note | append: ' ' | append: i.tags | join: ' ' | downcase | escape }}">
       <p class="lib-meta">
         {%- if i.status == "待整理" %}<span class="lib-pending">待整理</span>{% else %}<span class="lib-type">{{ i.type }}</span>{% endif %}
         {%- if i.issuer %}<span>{{ i.issuer }}</span>{% endif %}
@@ -52,10 +64,18 @@ permalink: /library/
       <h3><a href="{{ i.url }}" target="_blank" rel="noopener">{{ i.title }}</a></h3>
       {%- if i.title_zh %}<p class="lib-zh">{{ i.title_zh }}</p>{% endif %}
       {%- if i.note and i.note != "" %}<div class="lib-note">{{ i.note | markdownify }}</div>{% endif %}
+      {%- if i.albums.size > 0 %}
+      <p class="lib-albums">{% for a in i.albums %}<span>{{ a }}</span>{% endfor %}</p>
+      {%- endif %}
       {%- if i.tags.size > 0 %}
       <ul class="tags">{% for t in i.tags %}<li>{{ t }}</li>{% endfor %}</ul>
       {%- endif %}
-      {%- if i.source %}<p class="lib-source">出自 <a href="{{ i.source }}">{{ i.source_title | default: "快報" }}</a></p>{% endif %}
+      {%- assign fkey = "" -%}
+      {%- for pair in site.data.library -%}{%- if pair[1] == i -%}{%- assign fkey = pair[0] -%}{%- endif -%}{%- endfor %}
+      <p class="lib-source">
+        {%- if i.source %}出自 <a href="{{ i.source }}">{{ i.source_title | default: "快報" }}</a>{% endif -%}
+        {%- if fkey != "" %}<a class="lib-edit" href="https://github.com/{{ site.github.repository_nwo | default: 'chadfan1004/Newsletter-for-international-human-rights-law-gender-theory-and-labour-law' }}/edit/main/_data/library/{{ fkey }}.yml" target="_blank" rel="noopener">編輯專輯或筆記</a>{% endif -%}
+      </p>
     </li>
     {%- endfor %}
   </ul>
@@ -70,13 +90,14 @@ permalink: /library/
   function val(name) { var r = document.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ''; }
   function run() {
     var terms = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
-    var sec = val('lsec'), type = val('ltype');
+    var sec = val('lsec'), type = val('ltype'), alb = val('lalb');
     var seen = {};
     document.querySelectorAll('.lib-group').forEach(function (g) {
       var groupOn = !sec || g.getAttribute('data-sec') === sec;
       var shown = 0;
       g.querySelectorAll('.lib-item').forEach(function (it) {
-        var ok = groupOn && (!type || it.getAttribute('data-type') === type);
+        var ok = groupOn && (!type || it.getAttribute('data-type') === type) &&
+          (!alb || (it.getAttribute('data-albums') || '').indexOf('|' + alb + '|') >= 0);
         if (ok && terms.length) {
           var hay = it.getAttribute('data-text');
           ok = terms.every(function (t) { return hay.indexOf(t) >= 0; });

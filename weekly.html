@@ -1,0 +1,44 @@
+---
+layout: default
+title: 每週回顧
+permalink: /weekly/
+---
+{%- assign weeks = site.posts | group_by_exp: "p", "p.date | date: '%G-%V'" -%}
+{%- assign wd = "日,一,二,三,四,五,六" | split: "," -%}
+<header class="lib-head">
+  <h1>每週回顧</h1>
+  <p class="muted">把每一週五份快報的重點摘要放在一起，依主題排列，方便週末快速回顧。</p>
+</header>
+{%- if weeks.size == 0 %}
+<p class="muted">第一週的快報發布後，回顧會出現在這裡。</p>
+{%- else %}
+<nav class="week-index" aria-label="選擇週次">
+  {%- for w in weeks %}
+  {%- assign ws = w.items | sort: "date" -%}
+  <a href="#w{{ w.name }}">{{ ws.first.date | date: "%-m/%-d" }} 至 {{ ws.last.date | date: "%-m/%-d" }}</a>
+  {%- endfor %}
+</nav>
+{%- for w in weeks %}
+{%- assign ws = w.items | sort: "date" -%}
+<section class="week" id="w{{ w.name }}">
+  <h2>{{ ws.first.date | date: "%Y 年 %-m 月 %-d 日" }} 至 {{ ws.last.date | date: "%-m 月 %-d 日" }}<span class="week-no">第 {{ w.name | split: "-" | last | plus: 0 }} 週</span></h2>
+  {%- for s in site.sections %}
+  {%- assign sp = ws | where_exp: "p", "p.categories contains s.key" -%}
+  {%- if sp.size > 0 %}
+  <div class="week-sec sec-{{ s.key }}">
+    <h3><a href="{{ '/' | append: s.key | append: '/' | relative_url }}">{{ s.name }}</a></h3>
+    <ol class="week-days">
+      {%- for p in sp %}
+      {%- assign w0 = p.date | date: "%w" | plus: 0 %}
+      <li>
+        <a class="week-day" href="{{ p.url | relative_url }}">{{ p.date | date: "%-m/%-d" }}<span>週{{ wd[w0] }}</span></a>
+        <p>{{ p.summary }}</p>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+  {%- endif %}
+  {%- endfor %}
+</section>
+{%- endfor %}
+{%- endif %}

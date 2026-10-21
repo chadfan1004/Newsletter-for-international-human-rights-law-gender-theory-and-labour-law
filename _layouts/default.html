@@ -34,7 +34,7 @@
   <footer class="site-foot">
     <div class="wrap">
       <p>{{ site.disclaimer }}</p>
-      <p><a href="{{ '/archive/' | relative_url }}">更新紀錄</a></p>
+      <p><a href="{{ '/weekly/' | relative_url }}">每週回顧</a>　<a href="{{ '/archive/' | relative_url }}">更新紀錄</a></p>
       <p>訂閱：<a href="{{ '/feed.xml' | relative_url }}">全部</a>{% for s in site.sections %}、<a href="{{ '/feed/' | append: s.key | append: '.xml' | relative_url }}">{{ s.name }}</a>{% endfor %}（RSS）</p>
     </div>
   </footer>
