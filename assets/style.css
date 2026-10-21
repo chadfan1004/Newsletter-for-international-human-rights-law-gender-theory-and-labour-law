@@ -212,3 +212,20 @@ mark { background: var(--mark-bg); color: inherit; padding: 0 .1em; }
   .mark { min-width: 0; padding: .1rem .4rem; font-size: .8rem; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+
+/* Library (收藏) */
+.lib-head { max-width: 42rem; margin-bottom: 1rem; }
+.lib-head p { margin: .2rem 0 0; }
+.lib-filter .filter + .filter { margin-top: .4rem; }
+.lib-group { max-width: 46rem; margin-top: 2.25rem; }
+.lib-group h2 { margin: 0; border-bottom: 3px solid var(--sec); line-height: 0; }
+.lib-group h2 .tab { line-height: 1; }
+.lib-list { list-style: none; padding: 0; margin: 0; }
+.lib-item { padding: 1rem 0 1.1rem; border-bottom: 1px solid var(--rule); }
+.lib-meta { margin: 0 0 .25rem; font-family: var(--sans); font-size: .82rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: .25rem .9rem; }
+.lib-type { color: var(--sec); font-weight: 500; }
+.lib-item h3 { margin: 0; font-size: 1.05rem; line-height: 1.45; }
+.lib-item h3 a { color: var(--ink); text-decoration: none; }
+.lib-item h3 a:hover { color: var(--sec); text-decoration: underline; }
+.lib-zh { margin: .15rem 0 0; color: var(--muted); }
+.lib-note { margin: .45rem 0 0; font-size: .97rem; }

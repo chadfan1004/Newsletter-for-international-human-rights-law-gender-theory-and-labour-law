@@ -20,6 +20,7 @@
         {%- for s in site.sections %}
         <a class="nav-{{ s.key }}" href="{{ '/' | append: s.key | append: '/' | relative_url }}"{% if page.section_page == s.key or page.categories contains s.key %} aria-current="page"{% endif %}>{{ s.name }}</a>
         {%- endfor %}
+        <a href="{{ '/library/' | relative_url }}"{% if page.url == '/library/' %} aria-current="page"{% endif %}>收藏</a>
         <a href="{{ '/tags/' | relative_url }}"{% if page.url == '/tags/' %} aria-current="page"{% endif %}>標籤</a>
         <a href="{{ '/search/' | relative_url }}"{% if page.url == '/search/' %} aria-current="page"{% endif %}>搜尋</a>
         <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>關於</a>

@@ -39,6 +39,7 @@ feed:
 exclude:
   - README.md
   - PUBLISHING.md
+  - LIBRARY.md
   - CLAUDE.md
   - Gemfile
   - Gemfile.lock

@@ -1,0 +1,94 @@
+---
+layout: default
+title: 收藏
+permalink: /library/
+---
+{%- assign items = site.data.library | default: empty -%}
+<header class="lib-head">
+  <h1>收藏</h1>
+  <p class="muted">值得留存的指引、決議、報告、判決與文章，依主題整理。</p>
+</header>
+
+{%- if items.size == 0 %}
+<section class="empty">
+  <p>還沒有收藏。看到值得留存的文件時，把連結傳給 Claude，說明想放在哪個主題，就會整理好加到這裡。</p>
+</section>
+{%- else %}
+{%- assign types = items | map: "type" | uniq | sort -%}
+<form class="search-form lib-filter" role="search" onsubmit="return false">
+  <label for="lq" class="visually-hidden">在收藏中搜尋</label>
+  <input id="lq" type="search" placeholder="搜尋標題、機關、標籤或筆記" autocomplete="off">
+  <fieldset class="filter">
+    <legend class="visually-hidden">主題</legend>
+    <label><input type="radio" name="lsec" value="" checked> 全部主題</label>
+    {%- for s in site.sections %}
+    <label class="sec-{{ s.key }}"><input type="radio" name="lsec" value="{{ s.key }}"> {{ s.name }}</label>
+    {%- endfor %}
+  </fieldset>
+  <fieldset class="filter">
+    <legend class="visually-hidden">文件類型</legend>
+    <label><input type="radio" name="ltype" value="" checked> 全部類型</label>
+    {%- for t in types %}
+    <label><input type="radio" name="ltype" value="{{ t }}"> {{ t }}</label>
+    {%- endfor %}
+  </fieldset>
+</form>
+<p id="lstatus" class="muted" aria-live="polite">共 {{ items.size }} 份文件。</p>
+
+{%- for s in site.sections %}
+{%- assign group = items | where_exp: "i", "i.sections contains s.key" | sort: "date" | reverse -%}
+{%- if group.size > 0 %}
+<section class="lib-group sec-{{ s.key }}" data-sec="{{ s.key }}">
+  <h2><span class="tab">{{ s.name }}</span></h2>
+  <ul class="lib-list">
+    {%- for i in group %}
+    <li class="lib-item" data-type="{{ i.type }}" data-text="{{ i.title | append: ' ' | append: i.title_zh | append: ' ' | append: i.issuer | append: ' ' | append: i.note | append: ' ' | append: i.tags | join: ' ' | downcase | escape }}">
+      <p class="lib-meta">
+        <span class="lib-type">{{ i.type }}</span>
+        {%- if i.issuer %}<span>{{ i.issuer }}</span>{% endif %}
+        {%- if i.date %}<time datetime="{{ i.date | date: '%Y-%m-%d' }}">{{ i.date | date: "%Y 年 %-m 月 %-d 日" }}</time>{% endif %}
+      </p>
+      <h3><a href="{{ i.url }}" target="_blank" rel="noopener">{{ i.title }}</a></h3>
+      {%- if i.title_zh %}<p class="lib-zh">{{ i.title_zh }}</p>{% endif %}
+      {%- if i.note %}<p class="lib-note">{{ i.note }}</p>{% endif %}
+      {%- if i.tags.size > 0 %}
+      <ul class="tags">{% for t in i.tags %}<li>{{ t }}</li>{% endfor %}</ul>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+{%- endfor %}
+
+<script>
+(function () {
+  var q = document.getElementById('lq');
+  var status = document.getElementById('lstatus');
+  function val(name) { var r = document.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ''; }
+  function run() {
+    var terms = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    var sec = val('lsec'), type = val('ltype');
+    var seen = {};
+    document.querySelectorAll('.lib-group').forEach(function (g) {
+      var groupOn = !sec || g.getAttribute('data-sec') === sec;
+      var shown = 0;
+      g.querySelectorAll('.lib-item').forEach(function (it) {
+        var ok = groupOn && (!type || it.getAttribute('data-type') === type);
+        if (ok && terms.length) {
+          var hay = it.getAttribute('data-text');
+          ok = terms.every(function (t) { return hay.indexOf(t) >= 0; });
+        }
+        it.hidden = !ok;
+        if (ok) { shown++; seen[it.querySelector('a').href] = 1; }
+      });
+      g.hidden = shown === 0;
+    });
+    var n = Object.keys(seen).length;
+    status.textContent = n ? '顯示 ' + n + ' 份文件。' : '沒有符合條件的文件。試試換個關鍵字，或改選「全部」。';
+  }
+  q.addEventListener('input', run);
+  document.querySelectorAll('.lib-filter input[type="radio"]').forEach(function (r) { r.addEventListener('change', run); });
+})();
+</script>
+{%- endif %}
