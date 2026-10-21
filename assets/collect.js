@@ -57,8 +57,7 @@
     function build() {
       var now = taipeiNow();
       var yaml = [
-        '# 從「' + issueTitle + '」收藏。按下方的 Commit changes 即加入收藏專區。',
-        '# 想補一句筆記的話，寫在 note 的引號裡。',
+        '# 按 Commit changes 即收藏',
         'status: 待整理',
         'title: ' + q(title),
         'url: ' + q(url || issueUrl),
@@ -67,7 +66,7 @@
         "note: ''",
         'source: ' + q(issueUrl),
         'source_title: ' + q(issueTitle),
-        'context: ' + q(clip(context, 300)),
+        'context: ' + q(clip(context, 100)),
         'added: ' + ymd(now),
         ''
       ].join('\n');
