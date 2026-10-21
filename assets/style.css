@@ -145,13 +145,6 @@ a.tab:hover { color: var(--on-tab); }
 .leaf.is-empty { box-shadow: inset 6px 0 0 var(--rule), inset 12px 0 0 var(--paper); }
 .leaf.is-empty .leaf-name { color: var(--muted); }
 
-/* 襲：頁面頂端四色疊起的衣襟 */
-.kasane { display: grid; row-gap: 1px; }
-.kasane span { display: block; height: 3px; background: var(--sec); }
-.kasane span:nth-child(2) { margin-right: 4%; }
-.kasane span:nth-child(3) { margin-right: 8%; }
-.kasane span:nth-child(4) { margin-right: 12%; }
-
 .home-links { display: flex; flex-wrap: wrap; align-items: center; margin: 2.5rem 0 0; font-family: var(--sans); font-size: .92rem; line-height: 1.4; }
 .home-links a { color: var(--muted); padding: .2rem 0; }
 .home-links a + a { margin-left: 1.75rem; padding-left: 1.75rem; border-left: 1px solid var(--rule); }
