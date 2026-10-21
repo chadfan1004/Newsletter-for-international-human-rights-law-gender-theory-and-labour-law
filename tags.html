@@ -22,7 +22,8 @@ permalink: /tags/
 <div class="tag-cloud" id="tag-cloud">
   {%- for t in tags %}
   {%- assign n = t[1].size -%}
-  {%- assign lv = n | times: 5 | divided_by: max | plus: 1 | at_most: 5 -%}
+  {%- assign pct = n | times: 100 | divided_by: max -%}
+  {%- if pct >= 60 -%}{%- assign lv = 5 -%}{%- elsif pct >= 30 -%}{%- assign lv = 4 -%}{%- elsif pct >= 18 -%}{%- assign lv = 3 -%}{%- elsif pct >= 10 -%}{%- assign lv = 2 -%}{%- else -%}{%- assign lv = 1 -%}{%- endif -%}
   {%- assign best = "" -%}{%- assign bestn = 0 -%}
   {%- for s in site.sections -%}
     {%- assign c = 0 -%}
