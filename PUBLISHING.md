@@ -65,7 +65,7 @@ upcoming:
 
 ```bash
 git config user.name "Daily Newsletter Bot"
-git config user.email "chadfan1004@users.noreply.github.com"
+git config user.email "miotsukushi-law@users.noreply.github.com"
 git add _posts/<檔名>
 git commit -m "Add <欄目> YYYY-MM-DD"
 git pull --rebase origin main
@@ -74,7 +74,7 @@ git push origin main
 
 - 推送被拒（其他快報剛好同時推送）時，重新 `git pull --rebase origin main` 再推，最多重試 3 次。
 - 只新增或覆寫自己這一期的檔案，不要修改 repo 裡的任何其他檔案。
-- 推送成功後，網站約 1 到 3 分鐘內更新。網址：<https://chadfan1004.github.io/Newsletter-for-international-human-rights-law-gender-theory-and-labour-law/>
+- 推送成功後，網站約 1 到 3 分鐘內更新。網址：<https://miotsukushi-law.github.io/>
 
 ## 5. 標籤寫法參考
 

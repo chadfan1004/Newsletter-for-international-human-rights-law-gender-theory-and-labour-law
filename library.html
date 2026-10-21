@@ -74,7 +74,7 @@ permalink: /library/
       {%- for pair in site.data.library -%}{%- if pair[1] == i -%}{%- assign fkey = pair[0] -%}{%- endif -%}{%- endfor %}
       <p class="lib-source">
         {%- if i.source %}出自 <a href="{{ i.source }}">{{ i.source_title | default: "快報" }}</a>{% endif -%}
-        {%- if fkey != "" %}<a class="lib-edit" href="https://github.com/{{ site.github.repository_nwo | default: 'chadfan1004/Newsletter-for-international-human-rights-law-gender-theory-and-labour-law' }}/edit/main/_data/library/{{ fkey }}.yml" target="_blank" rel="noopener">編輯專輯或筆記</a>{% endif -%}
+        {%- if fkey != "" %}<a class="lib-edit" href="https://github.com/{{ site.github.repository_nwo | default: 'miotsukushi-law/miotsukushi-law.github.io' }}/edit/main/_data/library/{{ fkey }}.yml" target="_blank" rel="noopener">編輯專輯或筆記</a>{% endif -%}
       </p>
     </li>
     {%- endfor %}

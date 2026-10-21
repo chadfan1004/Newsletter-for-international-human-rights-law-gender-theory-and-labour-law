@@ -2,7 +2,7 @@
 layout: default
 ---
 {%- assign key = page.categories | first -%}
-<article class="issue sec-{{ key }}" data-section="{{ key }}" data-title="{{ page.title | escape }}" data-url="{{ page.url | absolute_url }}" data-repo="{{ site.github.repository_nwo | default: 'chadfan1004/Newsletter-for-international-human-rights-law-gender-theory-and-labour-law' }}">
+<article class="issue sec-{{ key }}" data-section="{{ key }}" data-title="{{ page.title | escape }}" data-url="{{ page.url | absolute_url }}" data-repo="{{ site.github.repository_nwo | default: 'miotsukushi-law/miotsukushi-law.github.io' }}">
   <header class="issue-head">
     <a class="tab" href="{{ '/' | append: key | append: '/' | relative_url }}">{% include section_name.html key=key %}</a>
     <h1>{{ page.title }}</h1>

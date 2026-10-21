@@ -2,7 +2,7 @@
 
 週一到週五整理國際人權法、性別法與理論、勞動法、AI 與數位治理、ESG 與供應鏈風險五個領域的新發展，附原始來源連結。
 
-網站：<https://chadfan1004.github.io/Newsletter-for-international-human-rights-law-gender-theory-and-labour-law/>
+網站：<https://miotsukushi-law.github.io/>
 
 - 每一期存放在 `_posts/`，由每日排程任務依 [PUBLISHING.md](PUBLISHING.md) 的規格自動發布。
 - 網站以 GitHub Pages 內建的 Jekyll 產生，版面在 `_layouts/`、`_includes/` 與 `assets/style.css`。
