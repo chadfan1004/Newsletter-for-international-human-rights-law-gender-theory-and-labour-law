@@ -7,7 +7,7 @@ permalink: /upcoming/
   <header class="lib-head">
     <h1>追蹤</h1>
     <p class="muted">快報找到的預告事項：即將發布的文件、預定宣判的判決、生效與施行日、意見徵詢截止、重要會期。依日期排列，過了日期會自動收起。</p>
-    <p class="up-actions"><a class="up-add" href="#" target="_blank" rel="noopener">新增追蹤事項</a><span class="muted">不想追蹤的，按該則的「不追蹤」。兩者都會打開 GitHub，按 Commit changes 後約兩分鐘生效。</span></p>
+    <p class="up-actions"><a class="up-add" href="#" target="_blank" rel="noopener">新增追蹤事項</a><span class="muted">不想追蹤的，按該則的「不追蹤」；想找回來，勾選「顯示已取消追蹤的事項」後按「恢復追蹤」。這些操作都會打開 GitHub，按 Commit changes 後約兩分鐘生效。</span></p>
   </header>
   <form class="lib-filter" onsubmit="return false">
     <fieldset class="filter">
@@ -20,6 +20,7 @@ permalink: /upcoming/
     <fieldset class="filter">
       <legend class="visually-hidden">顯示</legend>
       <label><input type="checkbox" id="up-past"> 也顯示已過去的事項</label>
+      <label><input type="checkbox" id="up-hid"> 顯示已取消追蹤的事項</label>
     </fieldset>
   </form>
   <p class="up-status muted" aria-live="polite">載入中。</p>

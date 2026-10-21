@@ -6,10 +6,23 @@
   var data;
   try { data = JSON.parse(dataEl.textContent); } catch (e) { return; }
   var SEC = data.sections || {};
-  var HIDDEN = {};
-  (data.hidden || []).forEach(function (k) { if (k) HIDDEN[k] = 1; });
-  var LS = 'up-hidden';
-  try { (JSON.parse(localStorage.getItem(LS) || '[]')).forEach(function (k) { HIDDEN[k] = 1; }); } catch (e) {}
+  // 取消追蹤的事項：SERVER 是已 commit 到 GitHub 的（key 對應檔名），
+  // 瀏覽器另外記住「剛取消、還沒生效」與「剛恢復、還沒生效」的事項。
+  var SERVER = {};
+  (data.hidden || []).forEach(function (h) {
+    if (!h) return;
+    if (typeof h === 'string') SERVER[h] = '';
+    else if (h.k) SERVER[h.k] = h.f || '';
+  });
+  var LS = 'up-hidden', LR = 'up-restored';
+  function lsGet(n) { try { return JSON.parse(localStorage.getItem(n) || '[]'); } catch (e) { return []; } }
+  function lsSet(n, a) { try { localStorage.setItem(n, JSON.stringify(a)); } catch (e) {} }
+  function lsAdd(n, k) { var a = lsGet(n); if (a.indexOf(k) < 0) a.push(k); lsSet(n, a); }
+  function lsDel(n, k) { lsSet(n, lsGet(n).filter(function (x) { return x !== k; })); }
+  function isHidden(k) {
+    if (lsGet(LR).indexOf(k) >= 0) return false;
+    return Object.prototype.hasOwnProperty.call(SERVER, k) || lsGet(LS).indexOf(k) >= 0;
+  }
   var WD = '日一二三四五六';
 
   // 台北時間的今天
@@ -27,12 +40,12 @@
       secs.forEach(function (s) { if (seen[key].s.indexOf(s) < 0) seen[key].s.push(s); });
       return;
     }
-    if (HIDDEN[key]) { seen[key] = { s: [] }; return; }
     var it = { key: key, d: d, t: x.t, k: x.k || '', u: x.u || '', s: secs.slice(), src: x.src || '', srcT: x.srcT || '' };
     seen[key] = it; items.push(it);
   });
   function sortKey(x) { return x.d.length === 7 ? x.d + '-99' : x.d; }
   items.sort(function (a, b) { return sortKey(a) < sortKey(b) ? -1 : sortKey(a) > sortKey(b) ? 1 : 0; });
+  function visible() { return items.filter(function (x) { return !isHidden(x.key); }); }
   function isUpcoming(x) { return x.d.length === 7 ? x.d >= thisMonth : x.d >= today; }
   function daysLeft(x) {
     if (x.d.length === 7) return null;
@@ -75,6 +88,7 @@
     var title = x.u ? '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>' : esc(x.t);
     var foot = [];
     if (x.src) foot.push('出自 <a href="' + esc(x.src) + '">' + esc(x.srcT || '快報') + '</a>');
+    if (opts.restore) foot.push('<a class="up-restore" href="#" data-key="' + esc(x.key) + '">恢復追蹤</a>');
     if (!opts.compact) {
       foot.push('<a href="' + ics(x) + '" download="' + esc(x.d) + '.ics">加入行事曆</a>');
       foot.push('<a class="up-hide" href="#" data-key="' + esc(x.key) + '">不追蹤</a>');
@@ -90,7 +104,7 @@
   // 首頁：近 30 天內，最多 6 則
   var home = document.getElementById('up-home');
   if (home) {
-    var soon = items.filter(function (x) { var n = daysLeft(x); return isUpcoming(x) && n !== null && n <= 30; }).slice(0, 6);
+    var soon = visible().filter(function (x) { var n = daysLeft(x); return isUpcoming(x) && n !== null && n <= 30; }).slice(0, 6);
     if (soon.length) {
       home.querySelector('.up-list').innerHTML = soon.map(function (x) { return itemHTML(x, { compact: true }); }).join('');
       home.hidden = false;
@@ -103,11 +117,14 @@
     var list = page.querySelector('.up-groups');
     var status = page.querySelector('.up-status');
     var pastBox = page.querySelector('#up-past');
+    var hidBox = page.querySelector('#up-hid');
     function val(name) { var r = page.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ''; }
     function render() {
       var sec = val('usec');
       var showPast = pastBox && pastBox.checked;
-      var pool = items.filter(function (x) { return !sec || x.s.indexOf(sec) >= 0; });
+      var inSec = function (x) { return !sec || x.s.indexOf(sec) >= 0; };
+      var pool = visible().filter(inSec);
+      var hid = items.filter(function (x) { return isHidden(x.key) && inSec(x); });
       var future = pool.filter(isUpcoming);
       var past = pool.filter(function (x) { return !isUpcoming(x); }).reverse();
       var html = '', month = '';
@@ -123,6 +140,11 @@
       if (month) html += '</ul></section>';
       if (showPast && past.length) {
         html += '<section class="up-month up-pastgroup"><h2>已過去</h2><ul class="up-list">' + past.map(function (x) { return itemHTML(x, { compact: true }); }).join('') + '</ul></section>';
+      }
+      if (hidBox && hidBox.checked) {
+        html += '<section class="up-month up-pastgroup"><h2>已取消追蹤</h2>' +
+          (hid.length ? '<ul class="up-list">' + hid.map(function (x) { return itemHTML(x, { compact: true, restore: true }); }).join('') + '</ul>'
+                      : '<p class="muted">沒有取消追蹤的事項。</p>') + '</section>';
       }
       list.innerHTML = html;
       status.textContent = future.length ? '接下來共有 ' + future.length + ' 件事。' : '目前沒有即將發生的事項。快報找到預告時會自動出現在這裡。';
@@ -152,19 +174,31 @@
         "  url: ''",
         ''].join('\n'));
     });
-    // 不追蹤：先在這台瀏覽器隱藏，再打開 GitHub 讓設定在所有裝置生效
     list.addEventListener('click', function (e) {
+      // 恢復追蹤：在這台瀏覽器立刻恢復；若已 commit 過，打開 GitHub 刪除那個取消檔
+      var r = e.target.closest('.up-restore');
+      if (r) {
+        e.preventDefault();
+        var rk = r.getAttribute('data-key');
+        lsDel(LS, rk);
+        if (Object.prototype.hasOwnProperty.call(SERVER, rk)) {
+          lsAdd(LR, rk);
+          if (SERVER[rk]) window.open('https://github.com/' + repo + '/delete/main/_data/upcoming_hidden/' + encodeURIComponent(SERVER[rk]) + '.yml', '_blank', 'noopener');
+        }
+        render();
+        return;
+      }
+      // 不追蹤：先在這台瀏覽器隱藏，再打開 GitHub 讓設定在所有裝置生效
       var a = e.target.closest('.up-hide');
       if (!a) return;
       e.preventDefault();
       var key = a.getAttribute('data-key');
       var it = items.filter(function (x) { return x.key === key; })[0];
-      HIDDEN[key] = 1;
-      try { var arr = JSON.parse(localStorage.getItem(LS) || '[]'); arr.push(key); localStorage.setItem(LS, JSON.stringify(arr)); } catch (err) {}
-      items = items.filter(function (x) { return x.key !== key; });
+      lsDel(LR, key);
+      lsAdd(LS, key);
       render();
       if (it) window.open(ghNew('upcoming_hidden', stamp() + '.yml', [
-        '# 按 Commit changes 後，這件事就不會再出現在追蹤（所有裝置）。想恢復時刪除這個檔案即可。',
+        '# 按 Commit changes 後，這件事就不會再出現在追蹤（所有裝置）。想恢復時，到追蹤頁勾選「顯示已取消追蹤的事項」，按「恢復追蹤」。',
         'key: ' + yq(key),
         'title: ' + yq(it.t),
         ''].join('\n')), '_blank', 'noopener');

@@ -1,5 +1,5 @@
 {%- comment -%}把各期快報 front matter 的 upcoming 與 _data/upcoming/ 的手動條目輸出成 JSON，給 assets/upcoming.js 使用。{%- endcomment -%}
-<script id="up-data" type="application/json">{"hidden":[ {%- for pair in site.data.upcoming_hidden -%}{{ pair[1].key | append: "" | jsonify }}{% unless forloop.last %},{% endunless %}{%- endfor -%} ],"sections":{ {%- for s in site.sections -%}{{ s.key | jsonify }}:{{ s.name | jsonify }}{% unless forloop.last %},{% endunless %}{%- endfor -%} },"items":[
+<script id="up-data" type="application/json">{"hidden":[ {%- for pair in site.data.upcoming_hidden -%}{"k":{{ pair[1].key | append: "" | jsonify }},"f":{{ pair[0] | jsonify }}}{% unless forloop.last %},{% endunless %}{%- endfor -%} ],"sections":{ {%- for s in site.sections -%}{{ s.key | jsonify }}:{{ s.name | jsonify }}{% unless forloop.last %},{% endunless %}{%- endfor -%} },"items":[
 {%- assign first = true -%}
 {%- for p in site.posts -%}{%- for u in p.upcoming -%}
 {%- unless first %},{% endunless %}{"d":{{ u.date | append: "" | jsonify }},"t":{{ u.title | jsonify }},"k":{{ u.kind | default: "" | jsonify }},"u":{{ u.url | default: "" | jsonify }},"s":{{ p.categories | jsonify }},"src":{{ p.url | relative_url | jsonify }},"srcT":{{ p.title | jsonify }}}
