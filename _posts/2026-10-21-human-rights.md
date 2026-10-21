@@ -4,14 +4,14 @@ title: "國際人權法每日快報｜2026 年 10 月 21 日"
 date: 2026-10-21 04:00:00 +0800
 categories: [human-rights]
 tags: [ECtHR, 特別程序, 歐洲理事會, CCPR, 非洲人權機制, 歐盟]
-summary: "歐洲人權法院就盧森堡律師懲戒程序須親自到場的規定作成第 16 號議定書諮詢意見；聯合國特別程序專家譴責印度鎮壓青年抗議，高級專員就歐洲多國抗議與葉門塔伊茲圍困發表聲明。"
+summary: "歐洲人權法院就盧森堡律師懲戒程序須親自到場的規定作成第 16 號議定書諮詢意見，並宣告 7 件判決；聯合國特別程序專家譴責印度鎮壓青年抗議，高級專員就歐洲多國抗議與葉門塔伊茲圍困發表聲明。"
 ---
 
-查找範圍：台北時間 2026 年 10 月 19 日至 10 月 21 日（本期於 10 月 21 日凌晨撰寫，歐洲與美洲當地 10 月 20 日以後的部分發布尚未出現）。本期多個官方網站無法直接開啟（詳見檢查紀錄），查證不到的內容一律移到「待確認」或不寫。10 月 19 日已於前一期報導的項目（橄欖採收季專家聲明、CCPR 第 146 屆會期開議）不再重複。
+查找範圍：台北時間 2026 年 10 月 19 日至 10 月 21 日（本期於 10 月 21 日凌晨撰寫，歐洲與美洲當地 10 月 20 日以後的部分發布尚未出現）。本期發布後已重新檢查先前無法開啟的官方網站，補入歐洲人權法院判決與諮詢意見的官方新聞稿內容；美洲人權法院、美洲人權委員會與聯合國會議報導仍因網站本身錯誤無法讀取（詳見檢查紀錄），查證不到的內容一律移到「待確認」或不寫。10 月 19 日已於前一期報導的項目（橄欖採收季專家聲明、CCPR 第 146 屆會期開議）不再重複。
 
 ## 一、今日重點
 
-- **歐洲人權法院第 16 號議定書諮詢意見（10 月 20 日）**：應盧森堡憲法法院請求（P16-2026-002），法院就律師懲戒程序中「本人須親自到場、缺席時不得由代理人代為辯護」的規定表示意見。依媒體報導，法院認為缺席不能自動視為放棄辯護權，懲戒機關須先聽取代理人說明。
+- **歐洲人權法院第 16 號議定書諮詢意見（10 月 20 日）**：應盧森堡憲法法院請求（P16-2026-002），法院就律師懲戒程序中「本人須親自到場、缺席時不得由代理人代為辯護」的規定表示意見：親自到場的要求本身可以正當，但缺席不能自動視為放棄辯護權，懲戒機關須先聽取代理人說明，且無法聲請撤銷缺席判決可能破壞公平平衡。同日另有 7 件判決，包括 Aksoy v. Serbia 認定沒收過境未申報現金違反財產權。
 - **聯合國特別程序專家譴責印度鎮壓青年抗議（10 月 20 日）**：多位特別報告員與工作小組指出，過去三個月針對教育政策與選民名冊刪除爭議的抗議遭到過度用武、大規模拘留與斷網，要求獨立調查與賠償。
 - **高級專員 Türk 就歐洲多國抗議發表聲明（10 月 20 日）**：重申和平集會權與用武的合法、必要、比例原則，並呼籲與青年對話；同日另就葉門塔伊茲遭圍困要求立即開放人道救援。
 - **歐洲反種族主義與不容忍委員會（ECRI）發布比利時第七輪報告（10 月 20 日）**：兩項優先建議為警察仇恨言論與仇恨犯罪訓練，以及立法保護雙性人身體完整權。
@@ -59,19 +59,34 @@ summary: "歐洲人權法院就盧森堡律師懲戒程序須親自到場的規�
 - 法律意義：屬軟法性質的專家聲明。其論理落在轉型正義中的「記憶」與「不重演保證」，以及強迫失蹤案件中保全現場與證據的持續性義務（強迫失蹤屬持續性侵權，國家的調查義務在下落查明前不終止）。
 - 來源：[UN experts concerned over celebrations at former torture and disappearance site in Chile（OHCHR）](https://www.ohchr.org/en/press-releases/2026/10/un-experts-concerned-over-celebrations-former-torture-and-disappearance-site)
 
+**Statement by the Special Rapporteur on the right to food, Sofía Monsalve Suárez, at the opening of the 54th session of the Committee on World Food Security（糧食權特別報告員在世界糧食安全委員會第 54 屆會議開幕致詞）｜2026 年 10 月 19 日**
+
+- 內容摘要：這是 Monsalve Suárez 就任後首次在世界糧食安全委員會（CFS）發言。她表示最關切的是饑荒與「以飢餓作為戰爭武器」；2025 年長期飢餓人口下降，但急性飢餓自 2016 年以來持續上升，六個國家有 140 萬人處於災難等級。她呼籲安理會、CFS、人權機制與糧食安全階段綜合分類（IPC）加強協調與早期預警，並以饑荒倖存者為中心推動糧食體系轉型。
+- 法律意義：屬軟法性質的專家發言。值得注意的是把饑荒問題放到究責與預防的框架下處理，延續她 10 月 16 日向聯大提交、以「以飢餓作為戰爭武器」為主題的報告。
+- 來源：[Statement by the Special Rapporteur on the right to food（OHCHR）](https://www.ohchr.org/en/statements-and-speeches/2026/10/statement-special-rapporteur-right-food-sofia-monsalve-suarez)
+
 聯大第三委員會：依官方暫定議程，10 月 20、21 日排有多位特別報告員與 CED、CMW 主席的互動對話，但本期無法開啟聯合國會議報導確認實際內容，見「待確認」。
 
 ### 歐洲人權法院
 
 **Advisory opinion on the obligation for lawyers to appear in person before disciplinary bodies（關於律師須親自出席懲戒機關之義務的諮詢意見，P16-2026-002）｜2026 年 10 月 20 日**
 
-- 內容摘要：盧森堡憲法法院依第 16 號議定書請求法院表示意見，問題是 1991 年 8 月 10 日律師業法第 26 條要求受懲戒律師本人到場，缺席時不得由代理人代為辯護、也不得聲請撤銷缺席決定，是否符合公約第 6 條。原案是一名前律師（F.C.）在缺席下遭終身除名。依 Courthouse News 報導，法院承認親自到場的要求可服務於程序效率與直接訊問等正當目的，但認為缺席不能自動視為放棄辯護權；懲戒機關須先聽取代理人對缺席的說明，判斷當事人是否明確放棄辯護或意圖規避程序，若否，就應提供實質辯護機會，例如延期或允許代理。
-- 法律意義：第 16 號議定書諮詢意見由大法庭作成，不具拘束力，也不裁決國內個案，由請求法院自行適用。但它是法院對公約第 6 條的權威性闡釋，對未批准第 16 號議定書的國家亦有參考價值。論理上的重點是「棄權須明確」的既有判例被延伸到職業懲戒程序，並強調涉及職業與生計時須更加審慎。表決結果與組成本期未能從官方全文確認。
-- 來源：[Advisory opinions（ECHR，列明 2026 年 10 月 20 日作成）](https://www.echr.coe.int/advisory-opinions)、[Rights court rejects missed hearing as motive to silence lawyer's defense（Courthouse News，內容依此報導）](https://www.courthousenews.com/rights-court-rejects-missed-hearing-as-motive-to-silence-lawyers-defense/)
+- 內容摘要：盧森堡憲法法院依第 16 號議定書請求法院表示意見，問題是 1991 年 8 月 10 日律師業法第 26 條要求受懲戒律師本人到場，缺席時不得由代理人代為辯護、也不得聲請撤銷缺席決定，是否符合公約第 6 條。原案是一名前律師（F.C.）在缺席下遭終身除名。依官方新聞稿 ECHR 260 (2026)，法院的意見如下：
+  - 第 6 條第 1 項原則上不禁止國內法要求受懲戒律師本人到場；處理無正當理由缺席、拖延戰術與維護律師業正常運作都是正當目的。
+  - 當事人缺席但已委任代理人時，懲戒機關不得原則性拒絕聽取代理人對缺席的說明，藉此判斷缺席是否構成明確放棄辯護或意圖規避懲戒。
+  - 若無此種放棄，就須給予實質辯護機會，例如延期或允許代理人出庭；有兩個審級時，至少在上訴審應如此。懲戒處分嚴重影響執業、職涯、名譽或生計時，拒絕聽取代理人可能構成不合比例的限制。
+  - 無法聲請撤銷上訴審缺席判決，等於失去就事實與法律重新進行言詞辯論審理的機會，向最高法院提起法律審上訴無法補救；與禁止代理合併觀察，可能破壞第 6 條第 1 項要求的公平平衡。
+- 法律意義：依第 16 號議定書，諮詢意見由大法庭作成，不具拘束力，也不裁決國內個案，由請求法院自行適用（新聞稿未載表決結果與個別意見）。但它是法院對公約第 6 條的權威性闡釋，對未批准第 16 號議定書的國家亦有參考價值。論理上的重點是「棄權須明確」的既有判例被延伸到職業懲戒程序，並把處分對職業與生計的嚴重性納入比例原則的權衡。
+- 來源：[Advisory opinion (P16-2026-002) on the obligation for lawyers to appear in person before disciplinary bodies（ECHR 260 (2026) 新聞稿）](https://hudoc.echr.coe.int/app/conversion/pdf/?library=ECHR&id=003-8667907-12361370&filename=Advisory%20opinion%20(P16-2026-002)%20on%20the%20obligation%20for%20lawyers%20to%20appear%20in%20person%20before%20disciplinary%20bodies.pdf)、[Advisory opinion on the obligation for lawyers to appear in person before disciplinary bodies（ECHR）](https://www.echr.coe.int/w/advisory-opinion-on-the-obligation-for-lawyers-to-appear-in-person-before-disciplinary-bodies)、[Rights court rejects missed hearing as motive to silence lawyer's defense（Courthouse News，補充）](https://www.courthousenews.com/rights-court-rejects-missed-hearing-as-motive-to-silence-lawyers-defense/)
 
-**10 月 20 日的 7 件判決**：法院首頁列有「20 October: 7 Judgments」，依 10 月 15 日預告包括 Kapllanaj v. Albania（no. 34859/24，第 2 條）、Aksoy v. Serbia（no. 4320/15，第 1 號議定書第 1 條）、Güray Gür v. Türkiye（no. 33372/19，第 6 條第 1 項）等。官方新聞稿本期無法正確開啟，判決結果移至「待確認」。
+**Judgments of 20.10.2026（10 月 20 日宣告之判決，新聞稿 ECHR 259 (2026)）｜2026 年 10 月 20 日**
 
-- 來源：[Forthcoming judgments and decisions 20-22.10.2026（HUDOC）](https://hudoc.echr.coe.int/app/conversion/pdf/?library=ECHR&id=003-8665279-12356522&filename=Forthcoming+judgments+and+decisions+20-22.10.2026.pdf)
+- 內容摘要：當日共宣告 7 件判決，其中 3 件為小庭（Chamber）判決，其餘 4 件為委員會（Committee）判決，新聞稿未摘要。
+  - **Kapllanaj v. Albania（no. 34859/24）**：申請人之子在地拉那國際機場室內服務露台墜落身亡，申請人主張國家未保護生命並未盡調查義務。法院認定違反公約第 2 條（調查面向）；申請人未請求公正補償。
+  - **Aksoy v. Serbia（no. 4320/15）**：居住德國的土耳其籍申請人過境塞爾維亞時，因未申報逾 1 萬歐元現金，遭沒收並另被處罰鍰。法院認定違反第 1 號議定書第 1 條（財產權），判賠財產上損害 51,000 歐元及訴訟費用 2,000 歐元。
+  - **Güray Gür v. Türkiye（no. 33372/19）**：申請人在伊斯坦堡被判強制性交與妨害自由罪，主張國內法院判決理由不足。法院認定強制性交罪部分違反第 6 條第 1 項，妨害自由罪部分則不違反；申請人未請求公正補償。
+- 法律意義：小庭判決依公約第 44 條在三個月內未請求移送大法庭即確定，對被告國具拘束力（第 46 條），由部長委員會監督執行；委員會判決宣告即確定。Aksoy 案延續法院對「未申報現金全額沒收加罰鍰」是否過度負擔的比例原則審查，對處理跨境現金與海關申報的實務有參考價值。Güray Gür 案則涉及性犯罪定罪判決的說理義務，同一判決內兩罪結論不同，顯示法院是逐罪審查理由是否充分。新聞稿未載詳細論理，本期不臆測。
+- 來源：[Judgments of 20.10.2026（ECHR 259 (2026)，HUDOC）](https://hudoc.echr.coe.int/app/conversion/pdf?library=ECHR&id=003-8667834-12361260&filename=Judgments%20of%2020.10.2026.pdf)、[Forthcoming judgments and decisions 20-22.10.2026（HUDOC）](https://hudoc.echr.coe.int/app/conversion/pdf/?library=ECHR&id=003-8665279-12356522&filename=Forthcoming+judgments+and+decisions+20-22.10.2026.pdf)
 
 ### 美洲人權法院
 
@@ -119,9 +134,7 @@ summary: "歐洲人權法院就盧森堡律師懲戒程序須親自到場的規�
 
 ## 四、待確認
 
-- **歐洲人權法院 10 月 20 日 7 件判決的結果**：官方「Judgments of 20.10.2026」新聞稿連結本期開啟後顯示為其他文件，無法確認。其中 Aksoy v. Serbia 有一家律師事務所文章稱法院認定違反第 1 號議定書第 1 條並判賠，但未能以官方文件核對，暫不採用。[Judgments of 20.10.2026（HUDOC）](https://hudoc.echr.coe.int/app/conversion/pdf/?library=ECHR&id=003-8667834-12361260&filename=Judgments%20of%2020.10.2026.pdf)
-- **聯大第三委員會 10 月 20、21 日互動對話**：依暫定議程，20 日為人權捍衛者、當代形式奴役、文化權特別報告員，以及 CED 主席、強迫失蹤工作小組、隱私權特別報告員；21 日為 CMW 主席、移民人權、境內流離失所者、法外處決、反恐、法官與律師獨立特別報告員。議程註明「可能變動」，且本期無法開啟聯合國會議報導（press.un.org）確認實際發言內容。[Third Committee provisional list（UN）](https://www.un.org/en/ga/third/81/pdf/provisional-list.pdf)
-- **糧食權特別報告員 Sofía Monsalve Suárez 在世界糧食安全委員會第 54 屆會議（CFS 54）開幕致詞（10 月 19 日）**：OHCHR 首頁列有此則，但聲明頁面無法開啟，內容未能確認。[Statement by the Special Rapporteur on the right to food（OHCHR）](https://www.ohchr.org/en/statements-and-speeches/2026/10/statement-special-rapporteur-right-food-sofia-monsalve-suarez)
+- **聯大第三委員會 10 月 20、21 日互動對話**：依暫定議程，20 日為人權捍衛者、當代形式奴役、文化權特別報告員，以及 CED 主席、強迫失蹤工作小組、隱私權特別報告員；21 日為 CMW 主席、移民人權、境內流離失所者、法外處決、反恐、法官與律師獨立特別報告員。議程註明「可能變動」，且聯合國會議報導（press.un.org）的第三委員會列表頁仍無法載入（網站錯誤，非權限問題），重新檢查後依然無法確認實際發言內容。[Third Committee provisional list（UN）](https://www.un.org/en/ga/third/81/pdf/provisional-list.pdf)
 - **義大利氣候訴訟「Giudizio Universale」（A Sud et al. v. Italy）羅馬上訴法院 10 月 21 日開庭**：依 ANSA 轉載報導，上訴援引 KlimaSeniorinnen 判決；是否當庭宣判尚不明，待下期確認。[Causa climatica contro lo Stato il 21 ottobre in Corte d'appello a Roma（EspansioneTv／ANSA）](https://www.espansionetv.it/2026/10/16/causa-climatica-contro-lo-stato-il-21-ottobre-in-corte-dappello-a-roma/)
 
 ## 五、來源清單
@@ -136,7 +149,9 @@ summary: "歐洲人權法院就盧森堡律師懲戒程序須親自到場的規�
 - [Advisory opinions（ECHR）](https://www.echr.coe.int/advisory-opinions)
 - [Rights court rejects missed hearing as motive to silence lawyer's defense（Courthouse News）](https://www.courthousenews.com/rights-court-rejects-missed-hearing-as-motive-to-silence-lawyers-defense/)
 - [Forthcoming judgments and decisions 20-22.10.2026（HUDOC）](https://hudoc.echr.coe.int/app/conversion/pdf/?library=ECHR&id=003-8665279-12356522&filename=Forthcoming+judgments+and+decisions+20-22.10.2026.pdf)
-- [Judgments of 20.10.2026（HUDOC）](https://hudoc.echr.coe.int/app/conversion/pdf/?library=ECHR&id=003-8667834-12361260&filename=Judgments%20of%2020.10.2026.pdf)
+- [Judgments of 20.10.2026（ECHR 259 (2026)）](https://hudoc.echr.coe.int/app/conversion/pdf?library=ECHR&id=003-8667834-12361260&filename=Judgments%20of%2020.10.2026.pdf)
+- [Advisory opinion (P16-2026-002)（ECHR 260 (2026)）](https://hudoc.echr.coe.int/app/conversion/pdf/?library=ECHR&id=003-8667907-12361370&filename=Advisory%20opinion%20(P16-2026-002)%20on%20the%20obligation%20for%20lawyers%20to%20appear%20in%20person%20before%20disciplinary%20bodies.pdf)
+- [Advisory opinion on the obligation for lawyers to appear in person before disciplinary bodies（ECHR）](https://www.echr.coe.int/w/advisory-opinion-on-the-obligation-for-lawyers-to-appear-in-person-before-disciplinary-bodies)
 - [Racism and intolerance in Belgium: experts recommend police training on hate speech and hate crime](https://www.coe.int/en/web/portal/-/racism-and-intolerance-in-belgium-experts-recommend-police-training-on-hate-speech-and-hate-crime)
 - [Human rights: EU appoints a new Special Representative](https://consilium.europa.eu/en/press/press-releases/2026/10/19/human-rights-eu-appoints-a-new-special-representative)
 - [Call for Nominations for the Election of Four (4) Judges of the African Court](https://www.african-court.org/afchpr/call-for-nominations-for-the-election-of-four-4-judges-of-the-african-court-on-human-and-peoples-rights/)
@@ -153,24 +168,24 @@ summary: "歐洲人權法院就盧森堡律師懲戒程序須親自到場的規�
 
 **固定來源**
 
-1. OHCHR 最新消息：無法開啟 /en/latest，改用 OHCHR 新聞稿列表與首頁；有新項目（葉門、歐洲抗議、印度、智利）。
+1. OHCHR 最新消息：/en/latest 重新檢查仍出現網站錯誤，改用 OHCHR 新聞稿列表（已開啟）；有新項目（葉門、歐洲抗議、印度、智利、糧食權特別報告員致詞）。
 2. 人權理事會首頁：已開啟；無新項目（僅列德班宣言政府間工作小組會議 10 月 20 日起）。
-3. 條約機構判例資料庫（juris.ohchr.org）：無法開啟（僅載入空白頁殼），site: 搜尋亦無新決定。
+3. 條約機構判例資料庫（juris.ohchr.org）：重新檢查可連線，但頁面以程式動態載入，只取得空白頁殼，無法讀取案件清單；site: 搜尋亦無新決定。
 4. 條約機構總覽與會期頁：已開啟；有新項目（CCPR 第 146 屆會期會議摘要與審查時程），其他委員會無新文件。
 5. 特別程序：已開啟；有新項目（印度、智利）。
-6. 聯合國新聞與會議報導（press.un.org）：無法開啟，改用第三委員會暫定議程與 UN Geneva 新聞簡報；第三委員會內容列入待確認。
-7. 歐洲人權法院新聞稿（HUDOC press）：無法開啟，改用法院首頁、諮詢意見頁與 HUDOC PDF；有新項目（諮詢意見 P16-2026-002），判決結果無法確認。
-8. 美洲人權法院新聞稿：無法開啟，改用西班牙文搜尋；無新項目。
-9. 美洲人權委員會新聞稿：無法開啟（英文與西班牙文頁面皆失敗），改用搜尋；無可確認的新項目。
+6. 聯合國新聞與會議報導（press.un.org）：重新檢查後首頁可開啟但未顯示日期項目，第三委員會列表頁出現網站錯誤；改用第三委員會暫定議程與 UN Geneva 新聞簡報，第三委員會內容列入待確認。
+7. 歐洲人權法院新聞稿（HUDOC press）：介面為動態載入，改用 HUDOC 查詢介面、法院首頁、諮詢意見頁與新聞稿 PDF（重新檢查後均已開啟）；有新項目（諮詢意見 ECHR 260 (2026)、判決 ECHR 259 (2026)、10 月 19 日暫時措施週報與獲獎新聞）。
+8. 美洲人權法院新聞稿：重新檢查仍無法開啟（WebFetch 回報網站錯誤，連線亦遭代理伺服器拒絕，屬網域未開放而非逐次權限），首頁僅載入 2015 年的舊快照；改用西班牙文搜尋，無新項目。
+9. 美洲人權委員會新聞稿：重新檢查仍無法開啟（英文與西班牙文頁面皆回報網站錯誤），改用搜尋；無可確認的新項目。
 10. 非洲人權委員會與非洲人權法院：已開啟；有新項目（非洲法院 10 月 19 日兩則公告），委員會最新為 10 月 18 日（前一期已報導）。
 11. 國際法院新聞稿：已開啟；無新項目。
 12. ILO 新聞：已開啟；無新項目。
 13. 歐洲理事會新聞：已開啟；有新項目（ECRI 比利時報告等）。
-14. 歐盟執委會新聞中心：無法開啟，改用執委會首頁與搜尋；執委會無新項目，另查得歐盟理事會人權特別代表任命。
+14. 歐盟執委會新聞中心：重新檢查可連線，但頁面為動態載入，只取得頁殼；改用執委會首頁與搜尋，執委會無新項目，另查得歐盟理事會人權特別代表任命。
 
 **廣泛檢索**
 
-- 總搜尋次數：106 次。
+- 總搜尋次數：112 次（含重新檢查時的補充搜尋）。
 - 主題 1（人權理事會）：Human Rights Council commission of inquiry report October 2026；Universal Periodic Review working group session November 2026；Human Rights Council special session 2026；fact-finding mission statement 20 October 2026。
 - 主題 2（條約機構）：Human Rights Committee views individual communication October 2026；CEDAW general recommendation draft consultation 2026；treaty body concluding observations October 2026；CESCR OR CERD OR CRPD draft general comment 2026。
 - 主題 3（特別程序）：Special Rapporteur Third Committee General Assembly report October 2026；UN experts 20 October 2026；Working Group on Business and Human Rights October 2026；Special Rapporteur privacy／slavery／cultural rights report 2026。
