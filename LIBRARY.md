@@ -17,7 +17,7 @@
 | `type` | 指引、決議、報告、一般性意見、判決、法規、公約、政策文件、文章、書籍、資料庫、其他；待整理時寫 `待整理` |
 | `issuer` | 發布機關、法院或作者 |
 | `date` | 文件發布日期 YYYY-MM-DD，以原始頁面為準；不確定就省略 |
-| `sections` | 主題，可多選：`human-rights`、`gender`、`labour`、`digital` |
+| `sections` | 主題，可多選：`human-rights`、`gender`、`labour`、`digital`、`esg` |
 | `tags` | 議題標籤，沿用 PUBLISHING.md 第 5 節的寫法 |
 | `url` | 原始文件連結，優先用官方頁面 |
 | `news_url` | 若原本收藏的是新聞報導，整理時改用官方文件作為 `url`，原報導連結移到這裡 |

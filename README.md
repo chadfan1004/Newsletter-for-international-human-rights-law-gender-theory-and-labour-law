@@ -1,6 +1,6 @@
 # 每日法潮
 
-週一到週五整理國際人權法、性別法與理論、勞動法、AI 與數位治理四個領域的新發展，附原始來源連結。
+週一到週五整理國際人權法、性別法與理論、勞動法、AI 與數位治理、ESG 與供應鏈風險五個領域的新發展，附原始來源連結。
 
 網站：<https://chadfan1004.github.io/Newsletter-for-international-human-rights-law-gender-theory-and-labour-law/>
 
