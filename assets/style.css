@@ -440,3 +440,20 @@ button.cal-day:hover { background: var(--card); }
   .up-side { position: static; order: -1; max-width: 22rem; }
 }
 .cal-note[hidden] { display: none; }
+
+/* 標籤：文字雲與清單切換 */
+.tag-view { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; padding: 2px; margin: .4rem 0 1.25rem; font-family: var(--sans); font-size: .88rem; }
+.tag-view button { font: inherit; background: none; border: 0; border-radius: 999px; padding: .25rem .9rem; color: var(--muted); cursor: pointer; }
+.tag-view button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.tag-cloud { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: .35rem 1.1rem; padding: 1.5rem 1rem; margin-bottom: 1.5rem; background: var(--card); line-height: 1.5; }
+.tc { color: var(--sec, var(--ink)); text-decoration: none; font-family: var(--serif); white-space: nowrap; }
+.tc:hover, .tc.is-on { text-decoration: underline; text-underline-offset: .25em; }
+.tc-1 { font-size: .92rem; opacity: .8; }
+.tc-2 { font-size: 1.1rem; }
+.tc-3 { font-size: 1.35rem; font-weight: 600; }
+.tc-4 { font-size: 1.7rem; font-weight: 700; }
+.tc-5 { font-size: 2.15rem; font-weight: 700; letter-spacing: .04em; }
+.tag-index a.is-on { border-color: var(--ink); background: var(--card); }
+.tag-group h2 { display: flex; align-items: baseline; gap: .6rem; }
+.tag-group h2 .count { font-family: var(--sans); font-weight: 400; }
+.tag-close { margin-left: auto; font-family: var(--sans); font-size: .82rem; background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; }

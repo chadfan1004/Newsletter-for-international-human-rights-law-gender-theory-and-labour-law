@@ -3,19 +3,46 @@ layout: default
 title: 標籤
 permalink: /tags/
 ---
-<h1>標籤</h1>
+<header class="lib-head">
+  <h1>標籤</h1>
+  <p class="muted">字越大，代表出現在越多期快報裡；顏色是這個標籤最常出現的主題。點標籤可以看相關的各期快報。</p>
+</header>
 {%- assign tags = site.tags | sort -%}
 {%- if tags.size == 0 %}
 <p class="muted">發布第一期之後，議題標籤會出現在這裡。</p>
 {%- else %}
-<ul class="tag-index">
+{%- assign max = 1 -%}
+{%- for t in tags -%}{%- if t[1].size > max -%}{%- assign max = t[1].size -%}{%- endif -%}{%- endfor -%}
+
+<div class="tag-view" role="group" aria-label="顯示方式">
+  <button type="button" data-view="cloud" aria-pressed="true">文字雲</button>
+  <button type="button" data-view="list" aria-pressed="false">全部標籤</button>
+</div>
+
+<div class="tag-cloud" id="tag-cloud">
+  {%- for t in tags %}
+  {%- assign n = t[1].size -%}
+  {%- assign lv = n | times: 5 | divided_by: max | plus: 1 | at_most: 5 -%}
+  {%- assign best = "" -%}{%- assign bestn = 0 -%}
+  {%- for s in site.sections -%}
+    {%- assign c = 0 -%}
+    {%- for p in t[1] -%}{%- if p.categories contains s.key -%}{%- assign c = c | plus: 1 -%}{%- endif -%}{%- endfor -%}
+    {%- if c > bestn -%}{%- assign bestn = c -%}{%- assign best = s.key -%}{%- endif -%}
+  {%- endfor %}
+  <a class="tc tc-{{ lv }} sec-{{ best }}" href="#{{ t[0] | slugify: 'raw' }}" data-n="{{ n }}" title="{{ n }} 期">{{ t[0] }}</a>
+  {%- endfor %}
+</div>
+
+<ul class="tag-index" id="tag-list" hidden>
   {%- for t in tags %}
   <li><a href="#{{ t[0] | slugify: 'raw' }}">{{ t[0] }}<span class="count">{{ t[1].size }}</span></a></li>
   {%- endfor %}
 </ul>
+
+<div class="tag-detail" id="tag-detail">
 {%- for t in tags %}
-<section class="tag-group" id="{{ t[0] | slugify: 'raw' }}">
-  <h2>{{ t[0] }}</h2>
+<section class="tag-group" id="{{ t[0] | slugify: 'raw' }}" hidden>
+  <h2>{{ t[0] }}<span class="count">{{ t[1].size }} 期</span><button type="button" class="tag-close">收起</button></h2>
   <ul class="tag-posts">
     {%- for p in t[1] %}
     {%- assign key = p.categories | first %}
@@ -24,4 +51,54 @@ permalink: /tags/
   </ul>
 </section>
 {%- endfor %}
+</div>
+
+<script>
+(function () {
+  var cloud = document.getElementById('tag-cloud');
+  var list = document.getElementById('tag-list');
+  var btns = document.querySelectorAll('.tag-view button');
+  var KEY = 'tag-view';
+
+  // 文字雲：大的放中間、小的往兩側，看起來比較像一朵雲
+  var items = Array.prototype.slice.call(cloud.children);
+  items.sort(function (a, b) { return (+b.dataset.n) - (+a.dataset.n) || a.textContent.localeCompare(b.textContent, 'zh-Hant'); });
+  var arranged = [];
+  items.forEach(function (el, i) { if (i % 2) arranged.push(el); else arranged.unshift(el); });
+  arranged.forEach(function (el) { cloud.appendChild(el); });
+
+  function setView(v) {
+    cloud.hidden = v !== 'cloud';
+    list.hidden = v !== 'list';
+    btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.view === v)); });
+    try { localStorage.setItem(KEY, v); } catch (e) {}
+  }
+  btns.forEach(function (b) { b.addEventListener('click', function () { setView(b.dataset.view); }); });
+  try { var saved = localStorage.getItem(KEY); if (saved === 'list' || saved === 'cloud') setView(saved); } catch (e) {}
+
+  var current = null;
+  function show(id, scroll) {
+    var g = id && document.getElementById(id);
+    if (current) current.hidden = true;
+    document.querySelectorAll('.tc.is-on, .tag-index a.is-on').forEach(function (a) { a.classList.remove('is-on'); });
+    if (!g || !g.classList.contains('tag-group')) { current = null; return; }
+    g.hidden = false; current = g;
+    document.querySelectorAll('a[href="#' + id + '"]').forEach(function (a) { a.classList.add('is-on'); });
+    if (scroll) g.scrollIntoView({ block: 'start' });
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('#tag-cloud a, #tag-list a');
+    if (a) {
+      e.preventDefault();
+      var id = decodeURIComponent(a.getAttribute('href').slice(1));
+      if (current && current.id === id) { show(null); history.replaceState(null, '', location.pathname); return; }
+      history.replaceState(null, '', '#' + encodeURIComponent(id));
+      show(id, true);
+      return;
+    }
+    if (e.target.closest('.tag-close')) { show(null); history.replaceState(null, '', location.pathname); }
+  });
+  if (location.hash.length > 1) show(decodeURIComponent(location.hash.slice(1)), true);
+})();
+</script>
 {%- endif %}
