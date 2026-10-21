@@ -457,3 +457,6 @@ button.cal-day:hover { background: var(--card); }
 .tag-group h2 { display: flex; align-items: baseline; gap: .6rem; }
 .tag-group h2 .count { font-family: var(--sans); font-weight: 400; }
 .tag-close { margin-left: auto; font-family: var(--sans); font-size: .82rem; background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; }
+
+/* hidden 屬性一律隱藏，不被各元件的 display 覆蓋 */
+[hidden] { display: none !important; }
