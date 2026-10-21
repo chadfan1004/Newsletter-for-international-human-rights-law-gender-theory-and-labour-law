@@ -6,6 +6,10 @@
   var data;
   try { data = JSON.parse(dataEl.textContent); } catch (e) { return; }
   var SEC = data.sections || {};
+  var HIDDEN = {};
+  (data.hidden || []).forEach(function (k) { if (k) HIDDEN[k] = 1; });
+  var LS = 'up-hidden';
+  try { (JSON.parse(localStorage.getItem(LS) || '[]')).forEach(function (k) { HIDDEN[k] = 1; }); } catch (e) {}
   var WD = '日一二三四五六';
 
   // 台北時間的今天
@@ -23,7 +27,8 @@
       secs.forEach(function (s) { if (seen[key].s.indexOf(s) < 0) seen[key].s.push(s); });
       return;
     }
-    var it = { d: d, t: x.t, k: x.k || '', u: x.u || '', s: secs.slice(), src: x.src || '', srcT: x.srcT || '' };
+    if (HIDDEN[key]) { seen[key] = { s: [] }; return; }
+    var it = { key: key, d: d, t: x.t, k: x.k || '', u: x.u || '', s: secs.slice(), src: x.src || '', srcT: x.srcT || '' };
     seen[key] = it; items.push(it);
   });
   function sortKey(x) { return x.d.length === 7 ? x.d + '-99' : x.d; }
@@ -70,7 +75,10 @@
     var title = x.u ? '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>' : esc(x.t);
     var foot = [];
     if (x.src) foot.push('出自 <a href="' + esc(x.src) + '">' + esc(x.srcT || '快報') + '</a>');
-    if (!opts.compact) foot.push('<a href="' + ics(x) + '" download="' + esc(x.d) + '.ics">加入行事曆</a>');
+    if (!opts.compact) {
+      foot.push('<a href="' + ics(x) + '" download="' + esc(x.d) + '.ics">加入行事曆</a>');
+      foot.push('<a class="up-hide" href="#" data-key="' + esc(x.key) + '">不追蹤</a>');
+    }
     return '<li class="up-item sec-' + esc(x.s[0] || '') + '" data-secs="' + esc(x.s.join(' ')) + '">' +
       '<time class="up-date" datetime="' + esc(x.d) + '">' + dateLabel(x) + '</time>' +
       '<div class="up-main"><p class="up-meta">' + countLabel(x) + (x.k ? '<span class="up-kind">' + esc(x.k) + '</span>' : '') + secChips + '</p>' +
@@ -120,6 +128,47 @@
       status.textContent = future.length ? '接下來共有 ' + future.length + ' 件事。' : '目前沒有即將發生的事項。快報找到預告時會自動出現在這裡。';
     }
     page.querySelectorAll('input').forEach(function (i) { i.addEventListener('change', render); });
+
+    var repo = page.getAttribute('data-repo');
+    function yq(s) { return "'" + String(s || '').replace(/\s+/g, ' ').trim().replace(/'/g, "''") + "'"; }
+    function stamp() {
+      var n = new Date(Date.now() + 8 * 3600e3).toISOString();
+      return n.slice(0, 10).replace(/-/g, '') + '-' + n.slice(11, 19).replace(/:/g, '');
+    }
+    function ghNew(dir, name, body) {
+      return 'https://github.com/' + repo + '/new/main/_data/' + dir + '?filename=' + encodeURIComponent(name) + '&value=' + encodeURIComponent(body);
+    }
+    // 新增追蹤事項
+    var add = page.querySelector('.up-add');
+    if (add) add.addEventListener('click', function () {
+      add.href = ghNew('upcoming', stamp() + '-manual.yml', [
+        '# 填好後按 Commit changes 即加入追蹤。',
+        "# date 寫 '2026-11-05'；只知道月份寫 '2026-11'。kind 可寫：發布、通過、宣判、生效、施行、截止、會議、其他。",
+        '# sections 可寫：' + Object.keys(SEC).map(function (k) { return k + '（' + SEC[k] + '）'; }).join('、') + '，例如 [gender, human-rights]',
+        "- date: ''",
+        "  title: ''",
+        "  kind: '其他'",
+        '  sections: []',
+        "  url: ''",
+        ''].join('\n'));
+    });
+    // 不追蹤：先在這台瀏覽器隱藏，再打開 GitHub 讓設定在所有裝置生效
+    list.addEventListener('click', function (e) {
+      var a = e.target.closest('.up-hide');
+      if (!a) return;
+      e.preventDefault();
+      var key = a.getAttribute('data-key');
+      var it = items.filter(function (x) { return x.key === key; })[0];
+      HIDDEN[key] = 1;
+      try { var arr = JSON.parse(localStorage.getItem(LS) || '[]'); arr.push(key); localStorage.setItem(LS, JSON.stringify(arr)); } catch (err) {}
+      items = items.filter(function (x) { return x.key !== key; });
+      render();
+      if (it) window.open(ghNew('upcoming_hidden', stamp() + '.yml', [
+        '# 按 Commit changes 後，這件事就不會再出現在追蹤（所有裝置）。想恢復時刪除這個檔案即可。',
+        'key: ' + yq(key),
+        'title: ' + yq(it.t),
+        ''].join('\n')), '_blank', 'noopener');
+    });
     render();
   }
 })();

@@ -387,3 +387,6 @@ mark { background: var(--mark-bg); color: inherit; padding: 0 .1em; }
   .prose p, .prose li { orphans: 3; widows: 3; }
   .item-head.is-target { background: none; padding-left: 0; }
 }
+.up-actions { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1rem; margin: .6rem 0 0; font-family: var(--sans); font-size: .85rem; }
+.up-add { display: inline-block; padding: .2rem .8rem; border: 1px solid var(--ink); border-radius: 999px; color: var(--ink); text-decoration: none; font-weight: 500; }
+.up-add:hover { background: var(--ink); color: var(--paper); }
