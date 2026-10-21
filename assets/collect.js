@@ -67,7 +67,7 @@
         'source: ' + q(issueUrl),
         'source_title: ' + q(issueTitle),
         'context: ' + q(clip(context, 100)),
-        'added: ' + ymd(now),
+        'added: ' + q(ymd(now)),
         ''
       ].join('\n');
       return 'https://github.com/' + repo + '/new/main/_data/library' +
