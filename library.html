@@ -3,7 +3,8 @@ layout: default
 title: 收藏
 permalink: /library/
 ---
-{%- assign items = site.data.library | default: empty -%}
+{%- assign items = "" | split: "" -%}
+{%- for pair in site.data.library -%}{%- assign items = items | push: pair[1] -%}{%- endfor -%}
 <header class="lib-head">
   <h1>收藏</h1>
   <p class="muted">值得留存的指引、決議、報告、判決與文章，依主題整理。</p>
@@ -11,7 +12,7 @@ permalink: /library/
 
 {%- if items.size == 0 %}
 <section class="empty">
-  <p>還沒有收藏。看到值得留存的文件時，把連結傳給 Claude，說明想放在哪個主題，就會整理好加到這裡。</p>
+  <p>還沒有收藏。在快報條目旁按「收藏」，或把連結傳給 Claude，就會加到這裡。</p>
 </section>
 {%- else %}
 {%- assign types = items | map: "type" | uniq | sort -%}
@@ -36,7 +37,7 @@ permalink: /library/
 <p id="lstatus" class="muted" aria-live="polite">共 {{ items.size }} 份文件。</p>
 
 {%- for s in site.sections %}
-{%- assign group = items | where_exp: "i", "i.sections contains s.key" | sort: "date" | reverse -%}
+{%- assign group = items | where_exp: "i", "i.sections contains s.key" | sort: "added", "last" | reverse -%}
 {%- if group.size > 0 %}
 <section class="lib-group sec-{{ s.key }}" data-sec="{{ s.key }}">
   <h2><span class="tab">{{ s.name }}</span></h2>
@@ -44,7 +45,7 @@ permalink: /library/
     {%- for i in group %}
     <li class="lib-item" data-type="{{ i.type }}" data-text="{{ i.title | append: ' ' | append: i.title_zh | append: ' ' | append: i.issuer | append: ' ' | append: i.note | append: ' ' | append: i.tags | join: ' ' | downcase | escape }}">
       <p class="lib-meta">
-        <span class="lib-type">{{ i.type }}</span>
+        {%- if i.status == "待整理" %}<span class="lib-pending">待整理</span>{% else %}<span class="lib-type">{{ i.type }}</span>{% endif %}
         {%- if i.issuer %}<span>{{ i.issuer }}</span>{% endif %}
         {%- if i.date %}<time datetime="{{ i.date | date: '%Y-%m-%d' }}">{{ i.date | date: "%Y 年 %-m 月 %-d 日" }}</time>{% endif %}
       </p>
@@ -54,6 +55,7 @@ permalink: /library/
       {%- if i.tags.size > 0 %}
       <ul class="tags">{% for t in i.tags %}<li>{{ t }}</li>{% endfor %}</ul>
       {%- endif %}
+      {%- if i.source %}<p class="lib-source">出自 <a href="{{ i.source }}">{{ i.source_title | default: "快報" }}</a></p>{% endif %}
     </li>
     {%- endfor %}
   </ul>

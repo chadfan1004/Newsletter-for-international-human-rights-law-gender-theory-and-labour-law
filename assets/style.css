@@ -229,3 +229,14 @@ mark { background: var(--mark-bg); color: inherit; padding: 0 .1em; }
 .lib-item h3 a:hover { color: var(--sec); text-decoration: underline; }
 .lib-zh { margin: .15rem 0 0; color: var(--muted); }
 .lib-note { margin: .45rem 0 0; font-size: .97rem; }
+
+/* Collect button on issue items */
+.collect {
+  display: inline-block; margin-left: .35rem; padding: .05rem .55rem; vertical-align: .1em;
+  font-family: var(--sans); font-size: .75rem; font-weight: 500; letter-spacing: .06em; line-height: 1.6;
+  color: var(--sec); border: 1px solid currentColor; border-radius: 999px; text-decoration: none; white-space: nowrap;
+}
+.collect:hover { background: var(--sec); color: var(--on-tab); }
+.lib-pending { font-family: var(--sans); font-size: .72rem; padding: 0 .45rem; border-radius: 999px; border: 1px dashed var(--muted); color: var(--muted); }
+.lib-source { margin: .35rem 0 0; font-family: var(--sans); font-size: .82rem; color: var(--muted); }
+.lib-source a { color: var(--muted); }
