@@ -24,14 +24,7 @@ title: 最新
 </section>
 {%- else %}
 {%- assign today = days.first %}
-<section id="up-home" class="up-home" aria-labelledby="up-home-h" hidden>
-  <div class="up-home-head">
-    <h2 id="up-home-h">近期追蹤</h2>
-    <a href="{{ '/upcoming/' | relative_url }}">全部追蹤</a>
-  </div>
-  <ul class="up-list up-rows"></ul>
-</section>
-
+<div class="home-grid">
 <section class="today" aria-label="本期快報">
   {%- for s in site.sections %}
   {%- assign hit = nil -%}
@@ -57,6 +50,17 @@ title: 最新
   </article>
   {%- endfor %}
 </section>
+
+<aside id="up-home" class="up-home" aria-labelledby="up-home-h" hidden>
+  <div class="up-home-head">
+    <h2 id="up-home-h">近期追蹤</h2>
+    <a href="{{ '/upcoming/' | relative_url }}">全部</a>
+  </div>
+  <div class="up-cal"></div>
+  <p class="cal-note" hidden></p>
+  <ul class="up-list up-rows"></ul>
+</aside>
+</div>
 
 <p class="home-links">
   <a href="{{ '/upcoming/' | relative_url }}">追蹤</a>

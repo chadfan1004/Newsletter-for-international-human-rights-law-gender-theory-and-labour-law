@@ -23,8 +23,13 @@ permalink: /upcoming/
       <label><input type="checkbox" id="up-hid"> 顯示已取消追蹤的事項</label>
     </fieldset>
   </form>
-  <p class="up-status muted" aria-live="polite">載入中。</p>
-  <div class="up-groups"></div>
+  <div class="up-layout">
+    <div class="up-maincol">
+      <p class="up-status muted" aria-live="polite">載入中。</p>
+      <div class="up-groups"></div>
+    </div>
+    <aside class="up-side" aria-label="月曆"><div class="up-cal"></div></aside>
+  </div>
   <noscript><p>這一頁需要開啟 JavaScript 才能顯示。</p></noscript>
 </div>
 {% include upcoming_data.html %}

@@ -101,21 +101,78 @@
       '</div></li>';
   }
 
-  // 首頁：近 30 天內，最多 6 則
+  // 月曆：有事的日子標上主題顏色的點，點日期可篩選當天事項
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  function calendar(root, onPick) {
+    var cur = today.slice(0, 7), picked = '';
+    function draw() {
+      var map = {};
+      visible().forEach(function (x) { if (x.d.length === 10) (map[x.d] = map[x.d] || []).push(x); });
+      var y = +cur.slice(0, 4), m = +cur.slice(5, 7);
+      var start = new Date(Date.UTC(y, m - 1, 1)).getUTCDay();
+      var days = new Date(Date.UTC(y, m, 0)).getUTCDate();
+      var h = '<div class="cal-head"><button type="button" class="cal-nav" data-step="-1" aria-label="上個月">‹</button>' +
+        '<span class="cal-title">' + y + ' 年 ' + m + ' 月</span>' +
+        '<button type="button" class="cal-nav" data-step="1" aria-label="下個月">›</button></div><div class="cal-grid">';
+      WD.split('').forEach(function (w) { h += '<span class="cal-wd">' + w + '</span>'; });
+      for (var i = 0; i < start; i++) h += '<span class="cal-pad"></span>';
+      for (var d = 1; d <= days; d++) {
+        var ds = cur + '-' + pad2(d), ev = map[ds] || [];
+        var cls = 'cal-day' + (ds === today ? ' is-today' : '') + (ds === picked ? ' is-picked' : '') + (ds < today ? ' is-past' : '');
+        var secs = [];
+        ev.forEach(function (x) { var s0 = x.s[0] || ''; if (secs.indexOf(s0) < 0) secs.push(s0); });
+        var dots = '<span class="cal-dots">' + secs.slice(0, 3).map(function (s) { return '<i class="sec-' + esc(s) + '"></i>'; }).join('') + '</span>';
+        h += ev.length
+          ? '<button type="button" class="' + cls + ' has-ev" data-d="' + ds + '" aria-pressed="' + (ds === picked) + '" aria-label="' + m + ' 月 ' + d + ' 日，' + ev.length + ' 件事"><span>' + d + '</span>' + dots + '</button>'
+          : '<span class="' + cls + '"><span>' + d + '</span>' + dots + '</span>';
+      }
+      root.innerHTML = h + '</div>';
+    }
+    root.addEventListener('click', function (e) {
+      var nav = e.target.closest('.cal-nav');
+      if (nav) {
+        var y = +cur.slice(0, 4), m = +cur.slice(5, 7) - 1 + (+nav.getAttribute('data-step'));
+        var dt = new Date(Date.UTC(y, m, 1));
+        cur = dt.getUTCFullYear() + '-' + pad2(dt.getUTCMonth() + 1);
+        draw(); return;
+      }
+      var b = e.target.closest('.cal-day[data-d]');
+      if (b) { picked = picked === b.getAttribute('data-d') ? '' : b.getAttribute('data-d'); draw(); onPick(picked); }
+    });
+    draw();
+    return { redraw: draw, clear: function () { picked = ''; draw(); } };
+  }
+  function dayLabel(ds) { var p = ds.split('-'); return (+p[1]) + ' 月 ' + (+p[2]) + ' 日'; }
+
+  // 首頁：月曆，加上近 30 天內最多 5 則；點月曆的日期則改列當天事項
   var home = document.getElementById('up-home');
   if (home) {
-    var soon = visible().filter(function (x) { var n = daysLeft(x); return isUpcoming(x) && n !== null && n <= 30; }).slice(0, 5);
-    if (soon.length) {
-      home.querySelector('.up-list').innerHTML = soon.map(function (x) {
+    var homeList = home.querySelector('.up-list');
+    var homeNote = home.querySelector('.cal-note');
+    var homeCal;
+    var rowHTML = function (x) {
         var p = x.d.split('-');
         var n = daysLeft(x);
-        var cnt = n === 0 ? '今天' : n === 1 ? '明天' : n + ' 天後';
+        var cnt = n === null ? '' : n === 0 ? '今天' : n === 1 ? '明天' : n > 0 ? n + ' 天後' : (-n) + ' 天前';
         var t = x.u ? '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>' : '<a href="' + esc(x.src || '#') + '">' + esc(x.t) + '</a>';
         return '<li class="up-row sec-' + esc(x.s[0] || '') + '"><time datetime="' + esc(x.d) + '">' + (+p[1]) + '/' + (+p[2]) + '</time>' +
-          '<span class="up-row-count' + (n <= 1 ? ' is-soon' : '') + '">' + cnt + '</span><span class="up-row-t">' + t + '</span></li>';
-      }).join('');
-      home.hidden = false;
-    }
+          '<span class="up-row-count' + (n !== null && n >= 0 && n <= 1 ? ' is-soon' : '') + '">' + cnt + '</span><span class="up-row-t">' + t + '</span></li>';
+    };
+    var showHome = function (day) {
+      var list = day
+        ? visible().filter(function (x) { return x.d === day; })
+        : visible().filter(function (x) { var n = daysLeft(x); return isUpcoming(x) && n !== null && n <= 30; }).slice(0, 5);
+      homeList.innerHTML = list.length ? list.map(rowHTML).join('') : '<li class="up-empty">30 天內沒有預定事項。</li>';
+      if (homeNote) {
+        homeNote.hidden = !day;
+        if (day) homeNote.innerHTML = dayLabel(day) + '的事項<button type="button" class="cal-reset">顯示近期</button>';
+      }
+    };
+    var calRoot = home.querySelector('.up-cal');
+    if (calRoot) homeCal = calendar(calRoot, showHome);
+    if (homeNote) homeNote.addEventListener('click', function (e) { if (e.target.closest('.cal-reset')) { homeCal && homeCal.clear(); showHome(''); } });
+    showHome('');
+    home.hidden = false;
   }
 
   // 追蹤頁
@@ -125,6 +182,8 @@
     var status = page.querySelector('.up-status');
     var pastBox = page.querySelector('#up-past');
     var hidBox = page.querySelector('#up-hid');
+    var pickedDay = '';
+    var pageCal = null;
     function val(name) { var r = page.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ''; }
     function render() {
       var sec = val('usec');
@@ -132,6 +191,14 @@
       var inSec = function (x) { return !sec || x.s.indexOf(sec) >= 0; };
       var pool = visible().filter(inSec);
       var hid = items.filter(function (x) { return isHidden(x.key) && inSec(x); });
+      if (pickedDay) {
+        var dayItems = pool.filter(function (x) { return x.d === pickedDay; });
+        list.innerHTML = '<section class="up-month"><h2>' + dayLabel(pickedDay) + '</h2>' +
+          (dayItems.length ? '<ul class="up-list">' + dayItems.map(function (x) { return itemHTML(x, {}); }).join('') + '</ul>' : '<p class="muted">這一天在目前的篩選條件下沒有事項。</p>') + '</section>';
+        status.innerHTML = '目前只顯示 ' + dayLabel(pickedDay) + '。<button type="button" class="cal-reset">顯示全部</button>';
+        if (pageCal) pageCal.redraw();
+        return;
+      }
       var future = pool.filter(isUpcoming);
       var past = pool.filter(function (x) { return !isUpcoming(x); }).reverse();
       var html = '', month = '';
@@ -154,8 +221,12 @@
                       : '<p class="muted">沒有取消追蹤的事項。</p>') + '</section>';
       }
       list.innerHTML = html;
-      status.textContent = future.length ? '接下來共有 ' + future.length + ' 件事。' : '目前沒有即將發生的事項。快報找到預告時會自動出現在這裡。';
+      status.textContent = future.length ? '接下來共有 ' + future.length + ' 件事。點月曆上的日期，可以只看那一天。' : '目前沒有即將發生的事項。快報找到預告時會自動出現在這裡。';
+      if (pageCal) pageCal.redraw();
     }
+    var pcRoot = page.querySelector('.up-cal');
+    if (pcRoot) pageCal = calendar(pcRoot, function (day) { pickedDay = day; render(); });
+    status.addEventListener('click', function (e) { if (e.target.closest('.cal-reset')) { pickedDay = ''; if (pageCal) pageCal.clear(); render(); } });
     page.querySelectorAll('input').forEach(function (i) { i.addEventListener('change', render); });
 
     var repo = page.getAttribute('data-repo');
