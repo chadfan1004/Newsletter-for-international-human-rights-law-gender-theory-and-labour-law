@@ -298,7 +298,7 @@ mark { background: var(--mark-bg); color: inherit; padding: 0 .1em; }
 .hero-title rt { font-size: .17em; font-weight: 400; letter-spacing: .5em; color: var(--muted); }
 
 /* 追蹤 */
-.up-home { margin: 0 0 2.25rem; }
+.up-home { margin: 0 0 2rem; }
 .up-home-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--rule); padding-bottom: .4rem; margin-bottom: .2rem; }
 .up-home-head h2 { margin: 0; font-size: 1.1rem; letter-spacing: .12em; }
 .up-home-head a { font-family: var(--sans); font-size: .88rem; color: var(--muted); }
@@ -392,3 +392,14 @@ mark { background: var(--mark-bg); color: inherit; padding: 0 .1em; }
 .up-actions { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1rem; margin: .6rem 0 0; font-family: var(--sans); font-size: .85rem; }
 .up-add { display: inline-block; padding: .2rem .8rem; border: 1px solid var(--ink); border-radius: 999px; color: var(--ink); text-decoration: none; font-weight: 500; }
 .up-add:hover { background: var(--ink); color: var(--paper); }
+
+/* 首頁近期追蹤：一則一行 */
+.up-rows { font-family: var(--sans); font-size: .92rem; }
+.up-row { display: grid; grid-template-columns: 3.4rem 4.2rem minmax(0, 1fr); align-items: baseline; column-gap: .6rem; padding: .32rem 0 .32rem .7rem; box-shadow: inset 3px 0 0 var(--sec, var(--rule)); margin: .3rem 0; }
+.up-row time { font-weight: 500; color: var(--ink); }
+.up-row-count { color: var(--muted); font-size: .82rem; }
+.up-row-count.is-soon { color: var(--c-labour); font-weight: 500; }
+.up-row-t { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.up-row-t a { color: var(--ink); text-decoration: none; }
+.up-row-t a:hover { text-decoration: underline; color: var(--sec); }
+.up-home .up-home-head { margin-bottom: .35rem; }

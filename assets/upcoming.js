@@ -104,9 +104,16 @@
   // 首頁：近 30 天內，最多 6 則
   var home = document.getElementById('up-home');
   if (home) {
-    var soon = visible().filter(function (x) { var n = daysLeft(x); return isUpcoming(x) && n !== null && n <= 30; }).slice(0, 6);
+    var soon = visible().filter(function (x) { var n = daysLeft(x); return isUpcoming(x) && n !== null && n <= 30; }).slice(0, 5);
     if (soon.length) {
-      home.querySelector('.up-list').innerHTML = soon.map(function (x) { return itemHTML(x, { compact: true }); }).join('');
+      home.querySelector('.up-list').innerHTML = soon.map(function (x) {
+        var p = x.d.split('-');
+        var n = daysLeft(x);
+        var cnt = n === 0 ? '今天' : n === 1 ? '明天' : n + ' 天後';
+        var t = x.u ? '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + '</a>' : '<a href="' + esc(x.src || '#') + '">' + esc(x.t) + '</a>';
+        return '<li class="up-row sec-' + esc(x.s[0] || '') + '"><time datetime="' + esc(x.d) + '">' + (+p[1]) + '/' + (+p[2]) + '</time>' +
+          '<span class="up-row-count' + (n <= 1 ? ' is-soon' : '') + '">' + cnt + '</span><span class="up-row-t">' + t + '</span></li>';
+      }).join('');
       home.hidden = false;
     }
   }
