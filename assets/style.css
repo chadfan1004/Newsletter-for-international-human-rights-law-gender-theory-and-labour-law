@@ -80,7 +80,7 @@ h3 { font-size: 1.1rem; }
 .site-nav .nav-labour[aria-current="page"] { color: var(--c-labour); border-bottom-color: var(--c-labour); }
 .site-nav .nav-digital[aria-current="page"] { color: var(--c-digital); border-bottom-color: var(--c-digital); }
 
-main.wrap { padding-top: 2.75rem; padding-bottom: 3.5rem; min-height: 60vh; }
+main.wrap { padding-top: 1.45rem; padding-bottom: 3.5rem; min-height: 60vh; }
 
 /* The index tab: the one memorable element */
 .tab {
@@ -102,7 +102,7 @@ a.tab:hover { color: var(--on-tab); }
 .hero {
   display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 2rem;
   align-items: end; margin: 0 0 2.5rem; position: relative; isolation: isolate;
-  padding-top: .5rem;
+  padding-top: 1rem;
 }
 .hero::before {
   content: ""; position: absolute; z-index: -1; top: 0; right: 0; bottom: 1.4rem; width: 72%;
@@ -172,7 +172,7 @@ a.tab:hover { color: var(--on-tab); }
 /* Issue page */
 .issue { max-width: 42rem; margin: 0 auto; }
 .issue-head { border-bottom: 3px solid var(--sec); padding-bottom: 1rem; margin-bottom: 2rem; }
-.issue-head .tab { margin-bottom: .9rem; border-radius: 7px; }
+.issue-head .tab { display: block; width: fit-content; margin-bottom: .9rem; border-radius: 7px; }
 .issue-head h1 { font-size: 1.65rem; }
 .issue-date { margin: 0; font-family: var(--sans); color: var(--muted); font-size: .95rem; }
 
@@ -197,7 +197,7 @@ a.tab:hover { color: var(--on-tab); }
 
 /* Section page */
 .section-head { max-width: 42rem; border-bottom: 3px solid var(--sec); padding-bottom: 1rem; margin-bottom: 1.5rem; }
-.section-head .tab { border-radius: 7px; margin-bottom: .9rem; }
+.section-head .tab { display: block; width: fit-content; border-radius: 7px; margin-bottom: .9rem; }
 .section-head p { margin: .3rem 0 0; color: var(--muted); }
 .issue-list { list-style: none; padding: 0; margin: 0; max-width: 42rem; }
 .issue-list li { padding: 1rem 0; border-bottom: 1px solid var(--rule); }
@@ -242,7 +242,6 @@ mark { background: var(--mark-bg); color: inherit; padding: 0 .1em; }
 
 @media (max-width: 760px) {
   body { font-size: 1rem; }
-  main.wrap { padding-top: 2rem; }
   h1 { font-size: 1.5rem; }
   .leaf { grid-template-columns: 1fr; row-gap: .6rem; }
   .leaf-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .9rem; }
