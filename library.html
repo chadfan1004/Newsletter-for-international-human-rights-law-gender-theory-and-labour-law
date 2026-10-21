@@ -51,7 +51,7 @@ permalink: /library/
       </p>
       <h3><a href="{{ i.url }}" target="_blank" rel="noopener">{{ i.title }}</a></h3>
       {%- if i.title_zh %}<p class="lib-zh">{{ i.title_zh }}</p>{% endif %}
-      {%- if i.note %}<p class="lib-note">{{ i.note }}</p>{% endif %}
+      {%- if i.note and i.note != "" %}<div class="lib-note">{{ i.note | markdownify }}</div>{% endif %}
       {%- if i.tags.size > 0 %}
       <ul class="tags">{% for t in i.tags %}<li>{{ t }}</li>{% endfor %}</ul>
       {%- endif %}

@@ -240,3 +240,5 @@ mark { background: var(--mark-bg); color: inherit; padding: 0 .1em; }
 .lib-pending { font-family: var(--sans); font-size: .72rem; padding: 0 .45rem; border-radius: 999px; border: 1px dashed var(--muted); color: var(--muted); }
 .lib-source { margin: .35rem 0 0; font-family: var(--sans); font-size: .82rem; color: var(--muted); }
 .lib-source a { color: var(--muted); }
+.lib-note { margin: .45rem 0 0; font-size: .97rem; }
+.lib-note p { margin: 0; }
