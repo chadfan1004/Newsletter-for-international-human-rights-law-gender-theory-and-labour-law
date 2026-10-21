@@ -14,7 +14,6 @@ title: 最新
   {%- assign w0 = d0 | date: "%w" | plus: 0 %}
   <p class="hero-date"><time datetime="{{ d0 | date: '%Y-%m-%d' }}">{% include date_kanji.html date=d0 %}<span class="hero-wd">週{{ wd[w0] }}</span></time></p>
   {%- endif %}
-  <div class="kasane" aria-hidden="true">{% for s in site.sections %}<span class="sec-{{ s.key }}"></span>{% endfor %}</div>
 </section>
 
 {%- if days.size == 0 %}
@@ -33,15 +32,19 @@ title: 最新
       <h2 class="leaf-name">{% if hit %}<a href="{{ hit.url | relative_url }}">{{ s.name }}</a>{% else %}{{ s.name }}{% endif %}</h2>
       <p class="leaf-full">{{ s.full }}</p>
     </header>
+    <div class="leaf-body">
     {%- if hit %}
     {%- if hit.summary %}<p class="leaf-sum">{{ hit.summary }}</p>{% endif %}
-    {%- if hit.tags.size > 0 %}
-    <ul class="tags">{% for t in hit.tags limit: 5 %}<li>{{ t }}</li>{% endfor %}</ul>
-    {%- endif %}
-    <p class="leaf-more"><a href="{{ hit.url | relative_url }}">閱讀本期</a></p>
+    <div class="leaf-foot">
+      {%- if hit.tags.size > 0 %}
+      <ul class="tags">{% for t in hit.tags limit: 5 %}<li>{{ t }}</li>{% endfor %}</ul>
+      {%- endif %}
+      <a class="leaf-more" href="{{ hit.url | relative_url }}">閱讀本期</a>
+    </div>
     {%- else %}
     <p class="leaf-sum muted">這一天沒有這份快報。<a href="{{ '/' | append: s.key | append: '/' | relative_url }}">看過去各期</a></p>
     {%- endif %}
+    </div>
   </article>
   {%- endfor %}
 </section>

@@ -12,6 +12,7 @@
 </head>
 <body{% if page.url == '/' %} class="is-home"{% endif %}>
   <a class="skip" href="#main">跳到主要內容</a>
+  <div class="kasane" aria-hidden="true">{% for s in site.sections %}<span class="sec-{{ s.key }}"></span>{% endfor %}</div>
   <header class="site-head">
     <div class="wrap head-inner">
       <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>

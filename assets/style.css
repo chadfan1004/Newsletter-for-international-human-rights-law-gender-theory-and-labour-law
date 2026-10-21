@@ -80,7 +80,7 @@ h3 { font-size: 1.1rem; }
 .site-nav .nav-labour[aria-current="page"] { color: var(--c-labour); border-bottom-color: var(--c-labour); }
 .site-nav .nav-digital[aria-current="page"] { color: var(--c-digital); border-bottom-color: var(--c-digital); }
 
-main { padding-top: 2.25rem; padding-bottom: 3rem; min-height: 60vh; }
+main.wrap { padding-top: 2.75rem; padding-bottom: 3.5rem; min-height: 60vh; }
 
 /* The index tab: the one memorable element */
 .tab {
@@ -101,8 +101,8 @@ a.tab:hover { color: var(--on-tab); }
 /* Home */
 .hero {
   display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 2rem;
-  align-items: end; margin: .75rem 0 2.75rem; position: relative; isolation: isolate;
-  padding-top: 1.5rem;
+  align-items: end; margin: 0 0 2.5rem; position: relative; isolation: isolate;
+  padding-top: .5rem;
 }
 .hero::before {
   content: ""; position: absolute; z-index: -1; top: 0; right: 0; bottom: 1.4rem; width: 72%;
@@ -128,29 +128,29 @@ a.tab:hover { color: var(--on-tab); }
 }
 .hero-date time > span { display: block; }
 .hero-date .kd-y, .hero-wd { color: var(--muted); }
-.kasane { grid-column: 1 / -1; display: grid; margin-top: 1.6rem; }
-.kasane span { display: block; height: 4px; background: var(--sec); }
-.kasane span + span { margin-top: 2px; }
-.kasane span:nth-child(2) { margin-right: 6%; }
-.kasane span:nth-child(3) { margin-right: 12%; }
-.kasane span:nth-child(4) { margin-right: 18%; }
-
-.today { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 2rem; }
+.today { display: grid; gap: 1.1rem; }
 .leaf {
-  position: relative; display: flex; flex-direction: column;
-  background: var(--card); padding: 1.25rem 1.4rem 1.2rem 2.1rem;
+  display: grid; grid-template-columns: 11rem minmax(0, 1fr); column-gap: 2rem;
+  background: var(--card); padding: 1.3rem 1.6rem 1.25rem 2.2rem;
   box-shadow: inset 6px 0 0 var(--sec), inset 12px 0 0 var(--sec-l);
 }
-.leaf-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem 1rem; margin-bottom: .65rem; }
-.leaf-name { margin: 0; font-size: 1.75rem; font-weight: 700; letter-spacing: .2em; line-height: 1.2; }
+.leaf-name { margin: 0; font-size: 1.9rem; font-weight: 700; letter-spacing: .2em; line-height: 1.15; }
 .leaf-name a { color: var(--sec); text-decoration: none; }
 .leaf-name a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
-.leaf-full { margin: 0; color: var(--muted); font-size: .88rem; }
-.leaf-sum { margin: 0 0 .6rem; font-size: .98rem; line-height: 1.85; }
-.leaf .tags { margin-top: auto; padding-top: .4rem; }
-.leaf-more { margin: .9rem 0 0; font-family: var(--sans); font-size: .9rem; }
+.leaf-full { margin: .45rem 0 0; color: var(--muted); font-size: .85rem; line-height: 1.5; }
+.leaf-sum { margin: 0; font-size: 1rem; line-height: 1.85; max-width: 44em; }
+.leaf-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1.5rem; margin-top: .7rem; }
+.leaf-foot .tags { margin: 0; }
+.leaf-more { margin-left: auto; font-family: var(--sans); font-size: .9rem; white-space: nowrap; }
 .leaf.is-empty { box-shadow: inset 6px 0 0 var(--rule), inset 12px 0 0 var(--paper); }
 .leaf.is-empty .leaf-name { color: var(--muted); }
+
+/* 襲：頁面頂端四色疊起的衣襟 */
+.kasane { display: grid; row-gap: 1px; }
+.kasane span { display: block; height: 3px; background: var(--sec); }
+.kasane span:nth-child(2) { margin-right: 4%; }
+.kasane span:nth-child(3) { margin-right: 8%; }
+.kasane span:nth-child(4) { margin-right: 12%; }
 
 .home-links { display: flex; flex-wrap: wrap; align-items: center; margin: 2.5rem 0 0; font-family: var(--sans); font-size: .92rem; line-height: 1.4; }
 .home-links a { color: var(--muted); padding: .2rem 0; }
@@ -249,12 +249,15 @@ mark { background: var(--mark-bg); color: inherit; padding: 0 .1em; }
 
 @media (max-width: 760px) {
   body { font-size: 1rem; }
+  main.wrap { padding-top: 2rem; }
   h1 { font-size: 1.5rem; }
-  .today { grid-template-columns: 1fr; gap: 1.25rem; }
+  .leaf { grid-template-columns: 1fr; row-gap: .6rem; }
+  .leaf-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .9rem; }
   .hero { column-gap: 1rem; margin-bottom: 2rem; }
   .hero-title { letter-spacing: .08em; }
   .hero-date { font-size: .9rem; letter-spacing: .14em; }
   .leaf { padding: 1.1rem 1.1rem 1.1rem 1.8rem; }
+  .leaf-name { font-size: 1.6rem; }
   .issue-head h1 { font-size: 1.4rem; }
   .ledger th, .ledger td { padding: .45rem .25rem; }
   .ledger tbody th { font-size: .82rem; white-space: normal; }
