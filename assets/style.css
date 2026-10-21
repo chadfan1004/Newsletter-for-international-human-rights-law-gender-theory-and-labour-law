@@ -15,6 +15,7 @@
   --c-digital: #3b6a4c; --l-digital: #bccb75; /* 木賊／萌黃 */
   --on-tab: #fcf8ee;
   --mark-bg: #f1dc9a;   /* 山吹淡 */
+  --seigaiha: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cg stroke-width='1.2'%3E%3Ccircle cx='0' cy='0' r='40' fill='%23f6efdf' stroke='%23d8c49c'/%3E%3Ccircle cx='0' cy='0' r='32' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='0' cy='0' r='24' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='0' cy='0' r='16' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='0' cy='0' r='8' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='80' cy='0' r='40' fill='%23f6efdf' stroke='%23d8c49c'/%3E%3Ccircle cx='80' cy='0' r='32' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='80' cy='0' r='24' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='80' cy='0' r='16' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='80' cy='0' r='8' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='40' cy='20' r='40' fill='%23f6efdf' stroke='%23d8c49c'/%3E%3Ccircle cx='40' cy='20' r='32' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='40' cy='20' r='24' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='40' cy='20' r='16' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='40' cy='20' r='8' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='0' cy='40' r='40' fill='%23f6efdf' stroke='%23d8c49c'/%3E%3Ccircle cx='0' cy='40' r='32' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='0' cy='40' r='24' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='0' cy='40' r='16' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='0' cy='40' r='8' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='80' cy='40' r='40' fill='%23f6efdf' stroke='%23d8c49c'/%3E%3Ccircle cx='80' cy='40' r='32' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='80' cy='40' r='24' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='80' cy='40' r='16' fill='none' stroke='%23d8c49c'/%3E%3Ccircle cx='80' cy='40' r='8' fill='none' stroke='%23d8c49c'/%3E%3C/g%3E%3C/svg%3E"); /* 青海波 */
   --serif: "Noto Serif TC", "Noto Serif CJK TC", "Source Serif 4", "Songti TC", serif;
   --sans: "Noto Sans TC", system-ui, -apple-system, "PingFang TC", sans-serif;
 }
@@ -32,6 +33,7 @@
     --c-digital: #a9c48f; --l-digital: #4b5d33;
     --on-tab: #26201f;
     --mark-bg: #6a5420;
+    --seigaiha: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cg stroke-width='1.2'%3E%3Ccircle cx='0' cy='0' r='40' fill='%2326201f' stroke='%234d413b'/%3E%3Ccircle cx='0' cy='0' r='32' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='0' cy='0' r='24' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='0' cy='0' r='16' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='0' cy='0' r='8' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='80' cy='0' r='40' fill='%2326201f' stroke='%234d413b'/%3E%3Ccircle cx='80' cy='0' r='32' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='80' cy='0' r='24' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='80' cy='0' r='16' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='80' cy='0' r='8' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='40' cy='20' r='40' fill='%2326201f' stroke='%234d413b'/%3E%3Ccircle cx='40' cy='20' r='32' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='40' cy='20' r='24' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='40' cy='20' r='16' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='40' cy='20' r='8' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='0' cy='40' r='40' fill='%2326201f' stroke='%234d413b'/%3E%3Ccircle cx='0' cy='40' r='32' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='0' cy='40' r='24' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='0' cy='40' r='16' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='0' cy='40' r='8' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='80' cy='40' r='40' fill='%2326201f' stroke='%234d413b'/%3E%3Ccircle cx='80' cy='40' r='32' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='80' cy='40' r='24' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='80' cy='40' r='16' fill='none' stroke='%234d413b'/%3E%3Ccircle cx='80' cy='40' r='8' fill='none' stroke='%234d413b'/%3E%3C/g%3E%3C/svg%3E");
   }
 }
 
@@ -99,8 +101,21 @@ a.tab:hover { color: var(--on-tab); }
 /* Home */
 .hero {
   display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 2rem;
-  align-items: end; margin: .75rem 0 2.75rem;
+  align-items: end; margin: .75rem 0 2.75rem; position: relative; isolation: isolate;
+  padding-top: 1.5rem;
 }
+.hero::before {
+  content: ""; position: absolute; z-index: -1; top: 0; right: 0; bottom: 1.4rem; width: 72%;
+  background: var(--seigaiha) right top / 64px 32px repeat;
+  -webkit-mask-image: linear-gradient(to left, #000 10%, transparent), linear-gradient(to bottom, transparent, #000 30%, #000 80%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to left, #000 10%, transparent), linear-gradient(to bottom, transparent, #000 30%, #000 80%, transparent);
+  mask-composite: intersect;
+}
+.hero-date { background: var(--paper); padding-left: .5rem; padding-top: .35rem; padding-bottom: .35rem; }
+.is-home .site-title { display: none; }
+.is-home .site-nav { margin-left: auto; }
+@media (max-width: 760px) { .is-home .site-nav { margin-left: 0; } }
 .hero-title {
   margin: 0; font-size: clamp(3rem, 9vw, 5.6rem); font-weight: 900; line-height: 1;
   letter-spacing: .14em; color: var(--ink);
