@@ -7,8 +7,6 @@ tags: [ECtHR, 歐洲理事會, 特別程序, 聯合國大會, 台灣]
 summary: "本期查找範圍為 10 月 15 日至 17 日：歐洲人權法院在 Zakutniy and Others v. Ukraine 首度認定烏克蘭民事賠償途徑原則上是羈押條件的有效救濟，並受理荷蘭最高法院就不利被告再審的諮詢意見請求；國際團結問題獨立專家向聯大提交婦女與國際團結報告。"
 ---
 
-本期為補發。查找範圍：台北時間 2026 年 10 月 15 日至 17 日。與 10 月 16 日那期重疊的項目（CEDAW 審查安哥拉與維德角、特別報告員報告 A/81/130、人權事務委員會審查預告）不再重複，請參閱該期。內容以官方來源為準，查證不到的資訊一律不寫。
-
 ## 一、今日重點
 
 - **ECtHR：Zakutniy and Others v. Ukraine（10 月 15 日）**：法院認定羈押條件違反第 3 條，但不違反第 13 條，理由是烏克蘭民事損害賠償訴訟原則上已可作為已脫離該羈押條件者的有效救濟。
@@ -81,3 +79,7 @@ summary: "本期查找範圍為 10 月 15 日至 17 日：歐洲人權法院在 
 - [Discontinuation of advisory opinion proceedings（ECHR）](https://www.echr.coe.int/w/discontinuation-of-advisory-opinion-proceedings)
 - [ECHR Ends Slovenian Roads Advisory Case After Settlement（Court Cast）](https://courtscast.com/echr-ends-slovenia-roads-advisory-proceedings-settlement/)
 - [刑事訴訟法第 422 條（全國法規資料庫）](https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=C0010001&flno=422)
+
+## 本期說明
+
+本期為補發。查找範圍：台北時間 2026 年 10 月 15 日至 17 日。與 10 月 16 日那期重疊的項目（CEDAW 審查安哥拉與維德角、特別報告員報告 A/81/130、人權事務委員會審查預告）不再重複，請參閱該期。內容以官方來源為準，查證不到的資訊一律不寫。

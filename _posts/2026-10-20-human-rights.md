@@ -7,8 +7,6 @@ tags: [特別程序, CCPR, CEDAW, 非洲人權機制, 人權盡職調查, 台灣
 summary: "本期查找範圍為 10 月 18 日至 20 日，新發展不多：聯合國特別程序專家警告約旦河西岸橄欖採收季的權利風險，人權事務委員會第 146 屆會期開議，非洲人權與民族權利委員會將於達喀爾紀念《非洲憲章》40 週年。"
 ---
 
-查找範圍：台北時間 2026 年 10 月 18 日至 20 日（本期發布時 10 月 20 日歐洲各項裁判尚未公布）。本期以官方來源為準，查證不到的內容一律不寫。
-
 ## 一、今日重點
 
 - **特別程序專家就橄欖採收季發出聯合警告（10 月 19 日）**：七位特別報告員與工作小組成員指出，約旦河西岸巴勒斯坦農民面臨更多屯墾者攻擊與軍事命令，影響糧食權、文化權與生計。
@@ -94,3 +92,7 @@ summary: "本期查找範圍為 10 月 18 日至 20 日，新發展不多：聯�
 - [African Commission to convene Third Joint Special Mechanisms Forum](https://achpr.au.int/en/news/press-releases/2026-10-18/press-release-african-commission-human-and-peoples-rights-convene)
 - [UN expert calls for robust human rights-based oversight of technology companies operating in transitional justice settings](https://www.ohchr.org/en/press-releases/2026/10/un-expert-calls-robust-human-rights-based-oversight-technology-companies)
 - [Saudi Arabia: Man Executed for Childhood Offenses（HRW）](https://www.hrw.org/news/2026/10/19/saudi-arabia-man-executed-for-childhood-offenses)
+
+## 本期說明
+
+查找範圍：台北時間 2026 年 10 月 18 日至 20 日（本期發布時 10 月 20 日歐洲各項裁判尚未公布）。本期以官方來源為準，查證不到的內容一律不寫。

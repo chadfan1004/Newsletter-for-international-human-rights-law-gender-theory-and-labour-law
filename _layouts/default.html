@@ -36,5 +36,14 @@
       <p>{{ site.disclaimer }}</p>
     </div>
   </footer>
+  <a href="#top" class="to-top" id="to-top" aria-label="回到最上面" hidden>↑</a>
+  <script>
+  (function () {
+    var b = document.getElementById("to-top");
+    function f() { b.hidden = window.scrollY < 600; }
+    window.addEventListener("scroll", f, { passive: true }); f();
+    b.addEventListener("click", function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); });
+  })();
+  </script>
 </body>
 </html>

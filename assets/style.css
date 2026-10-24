@@ -464,3 +464,10 @@ button.cal-day:hover { background: var(--card); }
 
 /* Issue line */
 .issue-line { margin: -1.2rem 0 1.2rem; font-family: var(--sans); font-size: .9rem; color: var(--muted); letter-spacing: .04em; }
+
+/* Back to top */
+.to-top { position: fixed; right: 20px; bottom: 24px; z-index: 50; width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-family: var(--sans); font-size: 1.2rem; line-height: 1;
+  background: var(--card); color: var(--ink); border: 1px solid var(--rule); box-shadow: 0 2px 8px rgba(0,0,0,.12); text-decoration: none; }
+.to-top:hover { color: var(--ink); border-color: var(--ink); }
+@media print { .to-top { display: none !important; } }

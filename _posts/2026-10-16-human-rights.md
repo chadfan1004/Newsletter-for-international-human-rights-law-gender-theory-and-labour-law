@@ -7,8 +7,6 @@ tags: [CEDAW, 墮胎, 生育權, 聯合國大會, 特別程序, AI, 人權盡職
 summary: "本期查找範圍為 10 月 14 日至 16 日：高級專員 Türk 向聯大第三委員會發表年度談話並宣布全球人權聯盟，CEDAW 審查安哥拉時追問墮胎刑事化與童婚，特別報告員則提出科技公司在轉型正義情境的人權盡職調查建議。"
 ---
 
-本期為補發。查找範圍：台北時間 2026 年 10 月 14 日至 16 日。內容以官方來源為準，查證不到的資訊一律不寫。
-
 ## 一、今日重點
 
 - **高級專員 Türk 向聯大第三委員會發表談話（10 月 14 日）**：呼籲在 AI 失控前建立治理，並宣布成立「全球人權聯盟」（Global Alliance for Human Rights），朝 2028 年《世界人權宣言》80 週年推進。
@@ -85,3 +83,7 @@ AI 與企業責任的新增訊息，見上述 Türk 談話與特別報告員報�
 - [UN Human Rights Committee to review Austria, Rwanda, Cameroon and Jamaica](https://www.ohchr.org/en/media-advisories/2026/10/un-human-rights-committee-review-austria-rwanda-cameroon-and-jamaica)
 - [UN expert calls for robust human rights-based oversight of technology companies operating in transitional justice settings](https://www.ohchr.org/en/press-releases/2026/10/un-expert-calls-robust-human-rights-based-oversight-technology-companies)
 - [Human rights are our greatest source of hope for peace, justice, and sustainability - High Commissioner Türk to Third Committee](https://www.ohchr.org/en/statements-and-speeches/2026/10/human-rights-are-our-greatest-source-hope-peace-justice-and)
+
+## 本期說明
+
+本期為補發。查找範圍：台北時間 2026 年 10 月 14 日至 16 日。內容以官方來源為準，查證不到的資訊一律不寫。
