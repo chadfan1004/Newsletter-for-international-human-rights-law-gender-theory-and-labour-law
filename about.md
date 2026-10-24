@@ -13,16 +13,7 @@ permalink: /about/
 
 這個網站起初是為了整理自己需要的資訊，後來決定公開，希望對有同樣需要的人有幫助。未來也許會在這裡寫自己的文章，到時候會另外標示。
 
-如果想聯絡我，可以寄信到 <span id="mail">miotsukushi.law [at] gmail.com</span>。
-
-<script>
-(function () {
-  var el = document.getElementById("mail");
-  if (!el) return;
-  var a = "miotsukushi.law" + String.fromCharCode(64) + "gmail.com";
-  el.innerHTML = '<a href="mailto:' + a + '">' + a + "</a>";
-})();
-</script>
+如果想聯絡我，可以寄信到 miotsukushi.law [at] gmail.com（請把 [at] 換成 @）。
 
 ## 名稱
 
