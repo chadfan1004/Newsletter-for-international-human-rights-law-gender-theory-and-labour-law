@@ -471,4 +471,3 @@ button.cal-day:hover { background: var(--card); }
 .sub-copy { font: inherit; font-size: .85rem; color: var(--muted); background: none; border: 1px solid var(--rule); border-radius: 5px; padding: .15rem .55rem; cursor: pointer; }
 .sub-copy:hover { color: var(--ink); border-color: var(--ink); }
 .sub-steps li { margin: .35rem 0; }
-@media (max-width: 760px) { .sub-table .sub-url { display: none; } }
