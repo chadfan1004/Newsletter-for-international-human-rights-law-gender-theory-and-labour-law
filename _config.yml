@@ -26,6 +26,10 @@ sections:
     name: 永續
     full: ESG 與供應鏈風險每日快報
 
+collections:
+  articles:
+    output: true
+
 disclaimer: 本站的快報內容由 Claude AI 自動蒐集生成，不代表站主本人的立場和意見，僅供研究參考，不構成法律意見。引用前請查核原始來源。
 
 plugins:

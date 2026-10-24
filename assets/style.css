@@ -44,6 +44,7 @@
 .sec-labour { --sec: var(--c-labour); --sec-l: var(--l-labour); }
 .sec-digital { --sec: var(--c-digital); --sec-l: var(--l-digital); }
 .sec-esg { --sec: var(--c-esg); --sec-l: var(--l-esg); }
+.sec-articles { --sec: var(--ink); --sec-l: var(--rule); }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -471,3 +472,19 @@ button.cal-day:hover { background: var(--card); }
   background: var(--card); color: var(--ink); border: 1px solid var(--rule); box-shadow: 0 2px 8px rgba(0,0,0,.12); text-decoration: none; }
 .to-top:hover { color: var(--ink); border-color: var(--ink); }
 @media print { .to-top { display: none !important; } }
+
+/* Articles and home blocks */
+.block-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin: 0 0 .9rem; padding-bottom: .5rem; border-bottom: 1px solid var(--rule); }
+.block-title { margin: 0; font-size: 1.15rem; letter-spacing: .08em; }
+.block-head a { font-family: var(--sans); font-size: .88rem; color: var(--muted); text-decoration: none; }
+.block-head a:hover { color: var(--ink); }
+.home-arts { margin: 0 0 2.6rem; }
+.art-rows { list-style: none; margin: 0; padding: 0; }
+.art-rows li { padding: .8rem 0; border-bottom: 1px solid var(--rule); }
+.art-rows li:last-child { border-bottom: 0; }
+.art-rows a { display: block; color: var(--ink); text-decoration: none; }
+.art-rows time { display: block; font-family: var(--sans); font-size: .88rem; color: var(--muted); }
+.art-title { display: block; font-family: var(--serif); font-weight: 700; font-size: 1.1rem; margin-top: .15rem; }
+.art-rows .sum, .art-list .sum { display: block; margin-top: .25rem; color: var(--muted); font-size: .95rem; }
+.art-rows a:hover .art-title, .art-list a:hover .art-title { text-decoration: underline; text-underline-offset: .2em; }
+.issue-line { margin: .3rem 0 1.2rem; }

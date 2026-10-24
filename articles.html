@@ -1,0 +1,26 @@
+---
+layout: default
+title: 文章
+permalink: /articles/
+---
+{%- assign arts = site.articles | sort: "date" | reverse -%}
+<header class="section-head sec-articles">
+  <span class="tab">文章</span>
+  <h1>文章</h1>
+  <p>站主自己撰寫的文章，和自動生成的快報不同。</p>
+</header>
+{%- if arts.size > 0 %}
+<ol class="issue-list art-list sec-articles">
+  {%- for a in arts %}
+  <li>
+    <a href="{{ a.url | relative_url }}">
+      <time datetime="{{ a.date | date_to_xmlschema }}">{% include date_zh.html date=a.date %}</time>
+      <span class="art-title">{{ a.title }}</span>
+      {%- if a.summary %}<span class="sum">{{ a.summary }}</span>{% endif %}
+    </a>
+  </li>
+  {%- endfor %}
+</ol>
+{%- else %}
+<p class="muted">還沒有文章。</p>
+{%- endif %}

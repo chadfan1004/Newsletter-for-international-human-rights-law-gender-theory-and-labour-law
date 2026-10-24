@@ -24,6 +24,24 @@ title: 澪標
 </section>
 {%- else %}
 {%- assign today = days.first %}
+{%- assign recent_arts = site.articles | sort: "date" | reverse %}
+{%- if recent_arts.size > 0 %}
+<section class="home-arts sec-articles" aria-labelledby="arts-h">
+  <div class="block-head"><h2 id="arts-h" class="block-title">近期文章</h2><a href="{{ '/articles/' | relative_url }}">全部文章</a></div>
+  <ol class="art-rows">
+    {%- for a in recent_arts limit: 3 %}
+    <li>
+      <a href="{{ a.url | relative_url }}">
+        <time datetime="{{ a.date | date_to_xmlschema }}">{% include date_zh.html date=a.date %}</time>
+        <span class="art-title">{{ a.title }}</span>
+        {%- if a.summary %}<span class="sum">{{ a.summary }}</span>{% endif %}
+      </a>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>
+{%- endif %}
+<div class="block-head"><h2 class="block-title">法與政策快報</h2></div>
 {%- assign d1 = today.items.first.date -%}
 {%- assign w1 = d1 | date: "%w" | plus: 0 %}
 <p class="issue-line" id="issue-line" data-last="{{ d1 | date: '%Y-%m-%d' }}">最新一期　{{ d1 | date: "%-m" }} 月 {{ d1 | date: "%-d" }} 日（週{{ wd[w1] }}）<span class="issue-next"></span></p>

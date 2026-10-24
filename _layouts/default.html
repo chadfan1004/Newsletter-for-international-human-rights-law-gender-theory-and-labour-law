@@ -18,6 +18,7 @@
       <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
       <nav class="site-nav" aria-label="主選單">
         <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>最新</a>
+        <a class="nav-articles" href="{{ '/articles/' | relative_url }}"{% if page.url == '/articles/' or page.layout == 'article' %} aria-current="page"{% endif %}>文章</a>
         {%- for s in site.sections %}
         <a class="nav-{{ s.key }}" href="{{ '/' | append: s.key | append: '/' | relative_url }}"{% if page.section_page == s.key or page.categories contains s.key %} aria-current="page"{% endif %}>{{ s.name }}</a>
         {%- endfor %}
@@ -34,7 +35,9 @@
   </main>
   <footer class="site-foot">
     <div class="wrap">
+      {%- unless page.url == '/articles/' or page.layout == 'article' %}
       <p>{{ site.disclaimer }}</p>
+      {%- endunless %}
     </div>
   </footer>
   <a href="#top" class="to-top" id="to-top" aria-label="回到最上面" hidden>↑</a>
