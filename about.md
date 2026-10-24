@@ -15,8 +15,6 @@ permalink: /about/
 
 喜歡做研究，卻缺乏研究的天分；於是投入實務工作，希望它有一天能成為研究的養分。
 
-這個網站起初是為了整理自己需要的資訊，後來決定公開，希望對有同樣需要的人有幫助。未來也許會在這裡寫自己的文章，到時候會另外標示。
-
 想聯絡我的話，歡迎來信：<a class="linkbtn" href="mailto:miotsukushi.law@gmail.com">miotsukushi.law@gmail.com</a>
 
 ## 名稱
