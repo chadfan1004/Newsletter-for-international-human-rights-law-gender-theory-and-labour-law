@@ -68,7 +68,8 @@ h3 { font-size: 1.1rem; }
 .skip { position: absolute; left: -999px; }
 .skip:focus { left: 16px; top: 8px; background: var(--card); padding: .4rem .8rem; z-index: 10; }
 
-.wrap { width: 100%; max-width: 62rem; margin: 0 auto; padding: 0 16px; }
+.wrap { width: 100%; max-width: 74rem; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 900px) { .wrap { padding: 0 32px; } }
 
 /* Header */
 .site-head { border-bottom: 1px solid var(--rule); background: var(--paper); }
@@ -460,3 +461,14 @@ button.cal-day:hover { background: var(--card); }
 
 /* hidden 屬性一律隱藏，不被各元件的 display 覆蓋 */
 [hidden] { display: none !important; }
+
+/* Issue line and subscribe page */
+.issue-line { margin: -1.2rem 0 1.2rem; font-family: var(--sans); font-size: .9rem; color: var(--muted); letter-spacing: .04em; }
+.sub-table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: .92rem; margin: .8rem 0 1.6rem; }
+.sub-table th, .sub-table td { text-align: left; padding: .55rem .6rem; border-bottom: 1px solid var(--rule); vertical-align: middle; }
+.sub-table th { color: var(--muted); font-weight: 500; }
+.sub-table td a + a { margin-left: 1rem; }
+.sub-copy { font: inherit; font-size: .85rem; color: var(--muted); background: none; border: 1px solid var(--rule); border-radius: 5px; padding: .15rem .55rem; cursor: pointer; }
+.sub-copy:hover { color: var(--ink); border-color: var(--ink); }
+.sub-steps li { margin: .35rem 0; }
+@media (max-width: 760px) { .sub-table .sub-url { display: none; } }

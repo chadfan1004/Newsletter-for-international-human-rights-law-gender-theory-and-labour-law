@@ -1,0 +1,50 @@
+---
+layout: default
+title: 訂閱
+permalink: /subscribe/
+---
+<article class="page">
+<h1>訂閱</h1>
+<p>每週一、週四凌晨發布新一期。可以用 RSS 閱讀器訂閱，也可以讓新一期自動寄到你的信箱。兩種方式都免費。</p>
+
+<h2>用 RSS 閱讀器</h2>
+<p>點「Feedly」或「Inoreader」會直接開啟該服務的訂閱畫面（第一次使用需要登入或註冊）。用其他閱讀器的話，複製網址貼到閱讀器的「新增訂閱」即可。</p>
+<table class="sub-table">
+  <thead><tr><th>快報</th><th>一鍵訂閱</th><th class="sub-url">網址</th></tr></thead>
+  <tbody>
+  {%- capture all_url %}{{ '/feed.xml' | absolute_url }}{% endcapture %}
+  <tr>
+    <td>全部五份</td>
+    <td><a href="https://feedly.com/i/subscription/feed/{{ all_url | url_encode }}" target="_blank" rel="noopener">Feedly</a><a href="https://www.inoreader.com/?add_feed={{ all_url | url_encode }}" target="_blank" rel="noopener">Inoreader</a></td>
+    <td class="sub-url"><button type="button" class="sub-copy" data-url="{{ all_url }}">複製網址</button></td>
+  </tr>
+  {%- for s in site.sections %}
+  {%- capture u %}{{ '/feed/' | append: s.key | append: '.xml' | absolute_url }}{% endcapture %}
+  <tr>
+    <td>{{ s.full | default: s.name }}</td>
+    <td><a href="https://feedly.com/i/subscription/feed/{{ u | url_encode }}" target="_blank" rel="noopener">Feedly</a><a href="https://www.inoreader.com/?add_feed={{ u | url_encode }}" target="_blank" rel="noopener">Inoreader</a></td>
+    <td class="sub-url"><button type="button" class="sub-copy" data-url="{{ u }}">複製網址</button></td>
+  </tr>
+  {%- endfor %}
+  </tbody>
+</table>
+
+<h2>用 Email</h2>
+<p>透過免費的 RSS 轉 Email 服務 <a href="https://blogtrottr.com/" target="_blank" rel="noopener">Blogtrottr</a>，有新一期時就會寄信給你：</p>
+<ol class="sub-steps">
+  <li>在上面的表格按「複製網址」，選你要的快報（或「全部五份」）。</li>
+  <li>打開 <a href="https://blogtrottr.com/" target="_blank" rel="noopener">blogtrottr.com</a>，把網址貼到第一個欄位，第二個欄位填你的 Email。</li>
+  <li>選寄送頻率：「Realtime」是每期一封，「Daily digest」是一天彙整一封。</li>
+  <li>到信箱點確認信裡的連結，就完成了。</li>
+</ol>
+<p class="muted">想停止的話，點每封信最下方的取消訂閱連結即可。</p>
+</article>
+<script>
+document.querySelectorAll(".sub-copy").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var url = b.getAttribute("data-url"), done = function () { b.textContent = "已複製"; setTimeout(function () { b.textContent = "複製網址"; }, 1800); };
+    if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, function () { prompt("複製這個網址：", url); });
+    else prompt("複製這個網址：", url);
+  });
+});
+</script>

@@ -13,7 +13,7 @@ title: 澪標
   {%- if days.size > 0 %}
   {%- assign d0 = days.first.items.first.date -%}
   {%- assign w0 = d0 | date: "%w" | plus: 0 %}
-  <p class="hero-date"><time datetime="{{ d0 | date: '%Y-%m-%d' }}">{% include date_kanji.html date=d0 %}<span class="hero-wd">週{{ wd[w0] }}</span></time></p>
+  <p class="hero-date" id="hero-date"><time datetime="{{ d0 | date: '%Y-%m-%d' }}">{% include date_kanji.html date=d0 %}<span class="hero-wd">週{{ wd[w0] }}</span></time></p>
   {%- endif %}
 </section>
 
@@ -24,6 +24,9 @@ title: 澪標
 </section>
 {%- else %}
 {%- assign today = days.first %}
+{%- assign d1 = today.items.first.date -%}
+{%- assign w1 = d1 | date: "%w" | plus: 0 %}
+<p class="issue-line" id="issue-line" data-last="{{ d1 | date: '%Y-%m-%d' }}">最新一期　{{ d1 | date: "%-m" }} 月 {{ d1 | date: "%-d" }} 日（週{{ wd[w1] }}）<span class="issue-next"></span></p>
 <div class="home-grid">
 <section class="today" aria-label="本期快報">
   {%- for s in site.sections %}
@@ -70,3 +73,30 @@ title: 澪標
 </p>
 {% include upcoming_data.html %}
 {%- endif %}
+<script>
+(function () {
+  var dg = "〇一二三四五六七八九", wd = "日一二三四五六";
+  function num(n) { return n <= 10 ? (n === 10 ? "十" : dg[n]) : n < 20 ? "十" + (n % 10 ? dg[n % 10] : "") : dg[Math.floor(n / 10)] + "十" + (n % 10 ? dg[n % 10] : ""); }
+  function taipei(d) { var t = new Date(d.getTime() + 8 * 3600e3); return { y: t.getUTCFullYear(), m: t.getUTCMonth() + 1, d: t.getUTCDate(), w: t.getUTCDay() }; }
+  function iso(o) { return o.y + "-" + String(o.m).padStart(2, "0") + "-" + String(o.d).padStart(2, "0"); }
+  function paint() {
+    var now = taipei(new Date());
+    var el = document.getElementById("hero-date");
+    if (el) {
+      var y = String(now.y).split("").map(function (c) { return dg[+c]; }).join("");
+      el.innerHTML = '<time datetime="' + iso(now) + '"><span class="kd-y">' + y + '年</span><span class="kd-md">' + num(now.m) + "月" + num(now.d) + '日</span><span class="hero-wd">週' + wd[now.w] + "</span></time>";
+    }
+    var line = document.getElementById("issue-line");
+    if (line) {
+      var last = line.getAttribute("data-last"), base = new Date(), n;
+      for (var i = 0; i < 8; i++) {
+        n = taipei(new Date(base.getTime() + i * 864e5));
+        if ((n.w === 1 || n.w === 4) && iso(n) > last) break;
+      }
+      line.querySelector(".issue-next").textContent = "　・　下一期　" + n.m + " 月 " + n.d + " 日（週" + wd[n.w] + "）";
+    }
+  }
+  paint();
+  setInterval(paint, 60000);
+})();
+</script>
