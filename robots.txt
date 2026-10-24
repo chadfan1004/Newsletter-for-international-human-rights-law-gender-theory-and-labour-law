@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://miotsukushi-law.github.io/sitemap.xml
